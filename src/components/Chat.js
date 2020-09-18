@@ -21,6 +21,8 @@ function Chat() {
     // Prevent refresh when hit the enter
     e.preventDefault();
     console.log("Typed: ", input);
+    // Clear text after enter clicked
+    setInput("");
   };
 
   return (

@@ -8,14 +8,31 @@ import {
 } from "@material-ui/icons";
 
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import db from "../firebase";
 
 function Chat() {
+  // Its like setter and getter
   const [input, setInput] = useState("");
   const [seed, setSeed] = useState("");
+  const [roomName, setRoomName] = useState("");
+
+  const { roomId } = useParams([]);
+
+  // Everytime chat.js loaded, it will the roomId into name from snapshot based on roomId
+  useEffect(() => {
+    if (roomId) {
+      db.collection("rooms")
+        .doc(roomId)
+        .onSnapshot((snapshot) => setRoomName(snapshot.data().name));
+    }
+    return () => {};
+    // trigger that also changes
+  }, [roomId]);
 
   useEffect(() => {
     setSeed(Math.floor(Math.random() * 5000));
-  }, []);
+  }, [roomId]);
 
   const sendMessage = (e) => {
     // Prevent refresh when hit the enter
@@ -31,7 +48,7 @@ function Chat() {
         <Avatar src={`https://avatars.dicebear.com/api/human/${seed}.svg`} />
 
         <div className="chat__headerInfo">
-          <h3>Room Name</h3>
+          <h3>{roomName}</h3>
           <p>Last Seen</p>
         </div>
 

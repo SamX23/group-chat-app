@@ -5,10 +5,6 @@
   border-bottom: 1px solid #f6f6f6;
 }
 
-.sidebarChat {
-  background-color: white;
-}
-
 .sidebarChat__info > h2 {
   font-size: 16px;
   margin-bottom: 8px;

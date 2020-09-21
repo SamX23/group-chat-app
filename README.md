@@ -10,6 +10,7 @@ Hi, I have made another build using React JS, this project is still on progress,
 
 ### Started on 15 September 2020
 
-### firebase deploy --only hosting:whatsapp-clone-sam23
+### Next feature
 
-### 1:24
+- Persistent login(refresh not loggedout)
+<!-- ### firebase deploy --only hosting:whatsapp-clone-sam23 -->

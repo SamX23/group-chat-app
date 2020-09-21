@@ -3,10 +3,15 @@ import ReactDOM from "react-dom";
 import "./styles/index.css";
 import App from "./components/App";
 import * as serviceWorker from "./serviceWorker";
+import { StateProvider } from "./StateProvider";
+import reducer, { initialState } from "./reducer";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    {/* Stateprovider = Data layer so the data can be push and pulled to and from global*/}
+    <StateProvider initialState={initialState} reducer={reducer}>
+      <App />
+    </StateProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

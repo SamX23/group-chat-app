@@ -39,6 +39,7 @@ function Chat() {
     e.preventDefault();
     console.log("Typed: ", input);
     // Clear text after enter clicked
+
     setInput("");
   };
 

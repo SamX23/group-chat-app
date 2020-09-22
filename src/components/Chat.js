@@ -9,13 +9,19 @@ import {
 
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useStateValue } from "../StateProvider";
+
 import db from "../firebase";
+import firebase from "firebase";
 
 function Chat() {
-  // Its like setter and getter
+  // Its like setter and getter to push and pull data from StateProvider
   const [input, setInput] = useState("");
   const [seed, setSeed] = useState("");
   const [roomName, setRoomName] = useState("");
+  const [messages, setMessages] = useState([]);
+  // eslint-disable-next-line
+  const [{ user }, dispatch] = useStateValue();
 
   const { roomId } = useParams([]);
 
@@ -25,8 +31,16 @@ function Chat() {
       db.collection("rooms")
         .doc(roomId)
         .onSnapshot((snapshot) => setRoomName(snapshot.data().name));
+
+      db.collection("rooms")
+        .doc(roomId)
+        .collection("messages")
+        .orderBy("timestamp", "asc")
+        .onSnapshot((snapshot) =>
+          setMessages(snapshot.docs.map((doc) => doc.data()))
+        );
     }
-    return () => {};
+    setInput("");
     // trigger that also changes
   }, [roomId]);
 
@@ -38,8 +52,28 @@ function Chat() {
     // Prevent refresh when hit the enter
     e.preventDefault();
     console.log("Typed: ", input);
-    // Clear text after enter clicked
 
+    db.collection("rooms")
+      .doc(roomId)
+      .collection("messages")
+      .add({
+        message: input,
+        // user and displayname is from google login
+        name: user.displayName,
+        // global (server) timestamp
+        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+      })
+      .catch((e) => console.error("Error writing document: ", e));
+
+    // Update timestamp
+    db.collection("rooms")
+      .doc(roomId)
+      .update({
+        datecreated: firebase.firestore.FieldValue.serverTimestamp(),
+      })
+      .catch((e) => console.error("Error writing document: ", e));
+
+    // Clear text after enter clicked
     setInput("");
   };
 
@@ -50,7 +84,16 @@ function Chat() {
 
         <div className="chat__headerInfo">
           <h3>{roomName}</h3>
-          <p>Last Seen</p>
+          {messages.timestamp ? (
+            <p>Start your Message</p>
+          ) : (
+            <p>
+              Last Seen{" "}
+              {new Date(
+                messages[messages.length - 1]?.timestamp?.toDate()
+              ).toUTCString()}{" "}
+            </p>
+          )}
         </div>
 
         <div className="chat__headerRight">
@@ -65,13 +108,24 @@ function Chat() {
           </IconButton>
         </div>
       </div>
+
       <div className="chat__body">
-        <p className={`chat__message ${true && "chat__receiver"}`}>
-          <span className="chat__name">Sami Kalammallah</span>
-          Hello
-          <span className="chat__timestamp">12:00 am</span>
-        </p>
+        {messages.map((message) => (
+          <p
+            className={`chat__message ${
+              message.name === user.displayName && "chat__receiver"
+            }`}
+          >
+            <span className="chat__name">{message.name}</span>
+            {message.message}
+            <span className="chat__timestamp">
+              {/* Simplest method handling timestamp on firebase */}
+              {new Date(message.timestamp?.toDate()).toUTCString()}
+            </span>
+          </p>
+        ))}
       </div>
+
       <div className="chat__footer">
         <InsertEmoticon />
         <form>

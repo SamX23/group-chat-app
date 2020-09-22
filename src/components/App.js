@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useStateValue } from "../StateProvider";
 import Chat from "./Chat";
+import Footer from "./Footer";
 import Login from "./Login";
 import Sidebar from "./Sidebar";
 
 function App() {
+  // eslint-disable-next-line 
   const [{ user }, dispatch] = useStateValue();
 
   return (
@@ -26,6 +28,7 @@ function App() {
           </Router>
         </div>
       )}
+      <Footer />
     </div>
   );
 }

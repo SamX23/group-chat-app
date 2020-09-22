@@ -1,8 +1,22 @@
 .sidebarChat {
+  position: relative;
+}
+
+.sidebarChat__container {
   display: flex;
   padding: 20px;
   cursor: pointer;
   border-bottom: 1px solid #f6f6f6;
+}
+
+.sidebarChat > a {
+  flex: 1;
+  text-decoration: none !important;
+  color: black;
+}
+
+.sidebarChat__container:hover {
+  background-color: #ebebeb;
 }
 
 .sidebarChat__info > h2 {
@@ -12,4 +26,18 @@
 
 .sidebarChat__info {
   margin-left: 15px;
+}
+
+.sidebarChat__option {
+  position: absolute;
+  z-index: 1;
+  top: 25px;
+  right: 10px;
+  align-self: center;
+  align-items: center;
+}
+
+.sidebarChat__option > Button {
+  min-width: unset;
+  color: rgb(68, 68, 68);
 }

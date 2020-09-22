@@ -6,6 +6,7 @@ import { useStateValue } from "../StateProvider";
 
 function Login() {
   // dispatch used to update datalayer on StateProvider
+  // eslint-disable-next-line
   const [{}, dispatch] = useStateValue();
 
   const signIn = () => {
@@ -29,18 +30,10 @@ function Login() {
           // https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/598px-WhatsApp.svg.png
           alt="Chat logo"
         />
-
         <div className="login__text">
-          <h1>Sign in to chat!</h1>
+          <h1>Group Chat App!</h1>
         </div>
-
-        <Button onClick={signIn}>
-          <span role="img" aria-label="point">
-            👉{" "}
-          </span>
-          <img className="login__googleIcon" src="" alt="icon" />
-          Sign In
-        </Button>
+        <Button onClick={signIn}>Sign In With Google</Button>
       </div>
     </div>
   );

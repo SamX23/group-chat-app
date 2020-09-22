@@ -3,6 +3,8 @@
 @import "./Sidebar.css";
 @import "./SidebarChat.css";
 @import "./Login.css";
+@import "./Footer.css";
+
 * {
   margin: 0;
   box-sizing: border-box;

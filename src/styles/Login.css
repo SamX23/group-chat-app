@@ -11,7 +11,13 @@
   text-align: center;
   background-color: white;
   border-radius: 10px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0, 0.12), 0 1px;
+  border: 3px solid;
+  animation: lineRGB 3s infinite;
+  transition: 0.2s;
+}
+
+.login__container:hover {
+  box-shadow: 0px 0px 40px 0px rgba(0, 0, 0, 0.75);
 }
 
 .login__container > img {
@@ -24,4 +30,31 @@
   text-transform: inherit !important;
   background-color: #0a8d4d !important;
   color: white;
+}
+
+.login__container > button:active {
+  position: relative;
+  top: 2px;
+}
+
+@keyframes lineRGB {
+  0% {
+    border-color: rgba(48, 200, 214);
+  }
+
+  25% {
+    border-color: rgb(255, 48, 48);
+  }
+
+  50% {
+    border-color: rgb(84, 255, 62);
+  }
+
+  75% {
+    border-color: rgb(74, 33, 255);
+  }
+
+  100% {
+    border-color: rgba(48, 200, 214);
+  }
 }

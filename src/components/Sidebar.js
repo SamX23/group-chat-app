@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { useStateValue } from "../StateProvider";
+
 import { Avatar, IconButton } from "@material-ui/core";
 import {
   Chat as ChatIcon,
@@ -6,24 +8,29 @@ import {
   MoreVert,
   SearchOutlined,
 } from "@material-ui/icons";
+
 import SidebarChat from "./SidebarChat";
 import db from "../firebase";
-import { useStateValue } from "../StateProvider";
+import firebase from "firebase";
 
 function Sidebar() {
   const [rooms, setRooms] = useState([]);
+  // eslint-disable-next-line
   const [{ user }, dispatch] = useStateValue();
 
   // Everytime sidebar.js loaded, it will setRooms from snapshot
   useEffect(() => {
-    const unsubscribe = db.collection("rooms").onSnapshot((snapshot) => {
-      setRooms(
-        snapshot.docs.map((doc) => ({
-          id: doc.id,
-          data: doc.data(),
-        }))
-      );
-    });
+    const unsubscribe = db
+      .collection("rooms")
+      .orderBy("datecreated", "desc")
+      .onSnapshot((snapshot) => {
+        setRooms(
+          snapshot.docs.map((doc) => ({
+            id: doc.id,
+            data: doc.data(),
+          }))
+        );
+      });
 
     return () => {
       unsubscribe();
@@ -35,8 +42,8 @@ function Sidebar() {
     if (roomName) {
       db.collection("rooms").add({
         name: roomName,
+        datecreated: firebase.firestore.FieldValue.serverTimestamp(),
       });
-      //
     }
   };
 

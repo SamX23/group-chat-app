@@ -4,7 +4,7 @@ Hi, I have made another build using React JS, this project is still on progress,
 
 - React, react router dom
 - Material UI
-- Random profile API (https://avatars.dicebear.com/api/human)
+- [Random profile API](https://avatars.dicebear.com/)
 - Firebase (Hosting, FireStore)
 - Google Login
 - New Room and new chat always on top
@@ -16,7 +16,6 @@ Hi, I have made another build using React JS, this project is still on progress,
 - Persistent login(refresh not logged out)
 - Logout Button instead of refresh
 - Working search feature
-- Working delete chat function
 - Emoticon working
 - More styling
 

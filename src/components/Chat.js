@@ -27,20 +27,25 @@ function Chat() {
 
   // Everytime chat.js loaded, it will the roomId into name from snapshot based on roomId
   useEffect(() => {
-    if (roomId) {
-      db.collection("rooms")
-        .doc(roomId)
-        .onSnapshot((snapshot) => setRoomName(snapshot.data().name));
+    // unsubscribe return is used in order to make the useEffect not always running
+    const unsubscribe = () => {
+      if (roomId) {
+        db.collection("rooms")
+          .doc(roomId)
+          .onSnapshot((snapshot) => setRoomName(snapshot.data().name));
 
-      db.collection("rooms")
-        .doc(roomId)
-        .collection("messages")
-        .orderBy("timestamp", "asc")
-        .onSnapshot((snapshot) =>
-          setMessages(snapshot.docs.map((doc) => doc.data()))
-        );
-    }
-    setInput("");
+        db.collection("rooms")
+          .doc(roomId)
+          .collection("messages")
+          .orderBy("timestamp", "asc")
+          .onSnapshot((snapshot) =>
+            setMessages(snapshot.docs.map((doc) => doc.data()))
+          );
+      }
+      setInput("");
+    };
+
+    return unsubscribe;
     // trigger that also changes
   }, [roomId]);
 
@@ -84,16 +89,12 @@ function Chat() {
 
         <div className="chat__headerInfo">
           <h3>{roomName}</h3>
-          {messages.timestamp ? (
-            <p>Start your Message</p>
-          ) : (
-            <p>
-              Last Seen{" "}
-              {new Date(
-                messages[messages.length - 1]?.timestamp?.toDate()
-              ).toUTCString()}{" "}
-            </p>
-          )}
+          <p>
+            Last update
+            {new Date(
+              messages[messages.length - 1]?.timestamp?.toDate()
+            ).toUTCString()}
+          </p>
         </div>
 
         <div className="chat__headerRight">

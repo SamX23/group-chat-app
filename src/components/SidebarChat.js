@@ -29,13 +29,13 @@ function SidebarChat({ id, name }) {
   const deleteChat = () => {
     let deleteConfirmation = window.confirm("Are you Sure ?");
     // delete rooms
-    if (deleteConfirmation) {
-      db.collection("rooms")
-        .doc(id)
-        .delete()
-        .then(() => console.log("Document successfully deleted!"))
-        .catch((e) => console.error("Error removing document: ", e));
-    }
+    // if (deleteConfirmation) {
+    //   db.collection("rooms")
+    //     .doc(id)
+    //     .delete()
+    //     .then(() => console.log("Document successfully deleted!"))
+    //     .catch((e) => console.error("Error removing document: ", e));
+    // }
   };
 
   return (

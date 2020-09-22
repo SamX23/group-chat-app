@@ -27,8 +27,6 @@ function Chat() {
 
   // Everytime chat.js loaded, it will the roomId into name from snapshot based on roomId
   useEffect(() => {
-    // unsubscribe return is used in order to make the useEffect not always running
-    const unsubscribe = () => {
       if (roomId) {
         db.collection("rooms")
           .doc(roomId)
@@ -43,9 +41,6 @@ function Chat() {
           );
       }
       setInput("");
-    };
-
-    return unsubscribe;
     // trigger that also changes
   }, [roomId]);
 

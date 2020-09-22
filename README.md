@@ -14,6 +14,7 @@ Hi, I have made another build using React JS, this project is still on progress,
 ### Next feature
 
 - Persistent login(refresh not logged out)
+- Delete Button still buggy
 - Logout Button instead of refresh
 - Working search feature
 - Emoticon working

@@ -27,15 +27,15 @@ function SidebarChat({ id, name }) {
   }, []);
 
   // delete component
-  const deleteChat = () => {
+  const deleteChat = (id) => {
     let deleteConfirmation = window.confirm("Are you Sure ?");
-    // if (deleteConfirmation) {
-    //   db.collection("rooms")
-    //     .doc(id)
-    //     .delete()
-    //     .then(() => console.log("Document successfully deleted!"))
-    //     .catch((e) => console.error("Error removing document: ", e));
-    // }
+    if (deleteConfirmation) {
+      db.collection("rooms")
+        .doc(id)
+        .delete()
+        .then(() => console.log("Document successfully deleted!"))
+        .catch((e) => console.error("Error removing document: ", e));
+    }
   };
 
   return (
@@ -50,7 +50,7 @@ function SidebarChat({ id, name }) {
         </div>
       </Link>
       <div className="sidebarChat__option">
-        <Button onClick={deleteChat}>
+        <Button onClick={() => deleteChat(id)}>
           <DeleteOutlineRoundedIcon />
         </Button>
       </div>

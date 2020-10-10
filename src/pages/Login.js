@@ -6,8 +6,7 @@ import { useStateValue } from "../StateProvider";
 
 function Login() {
   // dispatch used to update datalayer on StateProvider
-  // eslint-disable-next-line
-  const [{}, dispatch] = useStateValue();
+  const [, dispatch] = useStateValue();
 
   const signIn = () => {
     auth

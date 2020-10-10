@@ -20,8 +20,7 @@ function Chat() {
   const [seed, setSeed] = useState("");
   const [roomName, setRoomName] = useState("");
   const [messages, setMessages] = useState([]);
-  // eslint-disable-next-line
-  const [{ user }, dispatch] = useStateValue();
+  const [{ user }] = useStateValue();
 
   const { roomId } = useParams([]);
 
@@ -33,8 +32,7 @@ function Chat() {
       db.collection("rooms")
         .doc(roomId)
         .onSnapshot(
-          (snapshot) =>
-            snapshot.data().name && setRoomName(snapshot.data().name)
+          (snapshot) => snapshot.data() && setRoomName(snapshot.data().name)
         );
 
       db.collection("rooms")
@@ -89,12 +87,14 @@ function Chat() {
 
         <div className="chat__headerInfo">
           <h3>{roomName}</h3>
-          <p>
-            Last update
-            {new Date(
-              messages[messages.length - 1]?.timestamp?.toDate()
-            ).toUTCString()}
-          </p>
+          {messages.length > 0 && (
+            <p>
+              Last update
+              {new Date(
+                messages[messages.length - 1]?.timestamp?.toDate()
+              ).toUTCString()}
+            </p>
+          )}
         </div>
 
         <div className="chat__headerRight">
@@ -111,24 +111,21 @@ function Chat() {
       </div>
 
       <div className="chat__body">
-        {messages.map(
-          (message) =>
-            message.name && (
-              <p
-                key={`${message.name}-${message.timestamp}`}
-                className={`chat__message ${
-                  message.name === user.displayName && "chat__receiver"
-                }`}
-              >
-                <span className="chat__name">{message.name}</span>
-                {message.message}
-                <span className="chat__timestamp">
-                  {/* Simplest method handling timestamp on firebase */}
-                  {new Date(message.timestamp?.toDate()).toUTCString()}
-                </span>
-              </p>
-            )
-        )}
+        {messages.map((message) => (
+          <p
+            key={`${message.name}-${message.timestamp}`}
+            className={`chat__message ${
+              message.name === user.displayName && "chat__receiver"
+            }`}
+          >
+            <span className="chat__name">{message.name}</span>
+            {message.message}
+            <span className="chat__timestamp">
+              {/* Simplest method handling timestamp on firebase */}
+              {new Date(message.timestamp?.toDate()).toUTCString()}
+            </span>
+          </p>
+        ))}
       </div>
 
       <div className="chat__footer">

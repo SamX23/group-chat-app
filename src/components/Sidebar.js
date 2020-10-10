@@ -15,8 +15,7 @@ import firebase from "firebase";
 
 function Sidebar() {
   const [rooms, setRooms] = useState([]);
-  // eslint-disable-next-line
-  const [{ user }, dispatch] = useStateValue();
+  const [{ user }] = useStateValue();
 
   // Everytime sidebar.js loaded, it will setRooms from snapshot
   useEffect(() => {

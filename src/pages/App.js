@@ -7,7 +7,7 @@ import Login from "./Login";
 import Sidebar from "../components/Sidebar";
 
 function App() {
-  const [{ user }, dispatch] = useStateValue();
+  const [{ user }] = useStateValue();
 
   return (
     <div className="app">

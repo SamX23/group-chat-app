@@ -26,21 +26,26 @@ function Chat() {
   const { roomId } = useParams([]);
 
   // Everytime chat.js loaded, it will the roomId into name from snapshot based on roomId
+  // a deleted name will be undefined after deletion, so add some handling here as a temporary solution
+  // the proper solution will be update the list after deletion
   useEffect(() => {
-      if (roomId) {
-        db.collection("rooms")
-          .doc(roomId)
-          .onSnapshot((snapshot) => setRoomName(snapshot.data().name));
+    if (roomId) {
+      db.collection("rooms")
+        .doc(roomId)
+        .onSnapshot(
+          (snapshot) =>
+            snapshot.data().name && setRoomName(snapshot.data().name)
+        );
 
-        db.collection("rooms")
-          .doc(roomId)
-          .collection("messages")
-          .orderBy("timestamp", "asc")
-          .onSnapshot((snapshot) =>
-            setMessages(snapshot.docs.map((doc) => doc.data()))
-          );
-      }
-      setInput("");
+      db.collection("rooms")
+        .doc(roomId)
+        .collection("messages")
+        .orderBy("timestamp", "asc")
+        .onSnapshot((snapshot) =>
+          setMessages(snapshot.docs.map((doc) => doc.data()))
+        );
+    }
+    setInput("");
     // trigger that also changes
   }, [roomId]);
 
@@ -106,20 +111,24 @@ function Chat() {
       </div>
 
       <div className="chat__body">
-        {messages.map((message) => (
-          <p
-            className={`chat__message ${
-              message.name === user.displayName && "chat__receiver"
-            }`}
-          >
-            <span className="chat__name">{message.name}</span>
-            {message.message}
-            <span className="chat__timestamp">
-              {/* Simplest method handling timestamp on firebase */}
-              {new Date(message.timestamp?.toDate()).toUTCString()}
-            </span>
-          </p>
-        ))}
+        {messages.map(
+          (message) =>
+            message.name && (
+              <p
+                key={`${message.name}-${message.timestamp}`}
+                className={`chat__message ${
+                  message.name === user.displayName && "chat__receiver"
+                }`}
+              >
+                <span className="chat__name">{message.name}</span>
+                {message.message}
+                <span className="chat__timestamp">
+                  {/* Simplest method handling timestamp on firebase */}
+                  {new Date(message.timestamp?.toDate()).toUTCString()}
+                </span>
+              </p>
+            )
+        )}
       </div>
 
       <div className="chat__footer">

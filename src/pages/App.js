@@ -1,13 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useStateValue } from "../StateProvider";
-import Chat from "./Chat";
-import Footer from "./Footer";
+import Chat from "../components/Chat";
+import Footer from "../components/Footer";
 import Login from "./Login";
-import Sidebar from "./Sidebar";
+import Sidebar from "../components/Sidebar";
 
 function App() {
-  // eslint-disable-next-line 
   const [{ user }, dispatch] = useStateValue();
 
   return (

@@ -19,16 +19,16 @@ function SidebarChat({ id, name }) {
           setMessages(snapshot.docs.map((doc) => doc.data()))
         );
     }
-    // id as dependency
+    // id as depe                                                                ndency
   }, [id]);
 
   useEffect(() => {
     setSeed(Math.floor(Math.random() * 5000));
   }, []);
 
+  // delete component
   const deleteChat = () => {
     let deleteConfirmation = window.confirm("Are you Sure ?");
-    // delete rooms
     // if (deleteConfirmation) {
     //   db.collection("rooms")
     //     .doc(id)

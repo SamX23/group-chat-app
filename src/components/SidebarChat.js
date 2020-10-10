@@ -33,14 +33,7 @@ function SidebarChat({ id, name }) {
       db.collection("rooms")
         .doc(id)
         .delete()
-        .then(() => {
-          console.log("Document successfully deleted!");
-          // there is a bug if the room to delete state is selected, app will crash
-          // try delete the room before selecting it
-          // to clear this bug the solution is refresh the list after deletion
-          // but session is cleared if we refresh, so before that you have to create a proper session
-          // or make a list with state, and refresh the state (no need to refresh page/session)
-        })
+        .then(() => console.log("Document successfully deleted!"))
         .catch((e) => console.error("Error removing document: ", e));
     }
   };

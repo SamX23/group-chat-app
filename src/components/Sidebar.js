@@ -15,7 +15,7 @@ import firebase from "firebase";
 
 function Sidebar() {
   const [rooms, setRooms] = useState([]);
-  const [{ user }] = useStateValue();
+  const [{ user }, dispatch] = useStateValue();
 
   // Everytime sidebar.js loaded, it will setRooms from snapshot
   useEffect(() => {

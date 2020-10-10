@@ -19,7 +19,7 @@ function SidebarChat({ id, name }) {
           setMessages(snapshot.docs.map((doc) => doc.data()))
         );
     }
-    // id as depe                                                                ndency
+    // id as dependancy                                                                ndency
   }, [id]);
 
   useEffect(() => {

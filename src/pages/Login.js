@@ -26,7 +26,6 @@ function Login() {
       <div className="login__container">
         <img
           src="https://image.freepik.com/free-vector/cute-bot-say-users-hello-chatbot-greets-online-consultation_80328-195.jpg"
-          // https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/598px-WhatsApp.svg.png
           alt="Chat logo"
         />
         <div className="login__text">

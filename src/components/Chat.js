@@ -89,7 +89,7 @@ function Chat() {
           <h3>{roomName}</h3>
           {messages.length > 0 && (
             <p>
-              Last update{""}
+              Last update{" "}
               {new Date(
                 messages[messages.length - 1]?.timestamp?.toDate()
               ).toUTCString()}

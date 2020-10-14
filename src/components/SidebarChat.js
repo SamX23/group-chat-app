@@ -1,4 +1,5 @@
 import { Avatar, Button } from "@material-ui/core";
+import PropTypes from "prop-types";
 import DeleteOutlineRoundedIcon from "@material-ui/icons/DeleteOutlineRounded";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -59,3 +60,8 @@ function SidebarChat({ id, name }) {
 }
 
 export default SidebarChat;
+
+SidebarChat.propTypes = {
+  id: PropTypes.number,
+  name: PropTypes.string,
+};

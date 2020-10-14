@@ -17,6 +17,8 @@ function Sidebar() {
   const [rooms, setRooms] = useState([]);
   const [{ user }, dispatch] = useStateValue();
 
+  dispatch();
+
   // Everytime sidebar.js loaded, it will setRooms from snapshot
   useEffect(() => {
     const unsubscribe = db

@@ -14,8 +14,13 @@ const firebaseConfig = {
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 const db = firebaseApp.firestore();
 const auth = firebase.auth();
-// Google login auth
-const provider = new firebase.auth.GoogleAuthProvider();
+// Google login
+const persist = firebase.auth.Auth.Persistence.SESSION;
 
-export { auth, provider };
+const provider = new firebase.auth.GoogleAuthProvider();
+const providerPublic = provider.addScope(
+  "https://www.googleapis.com/auth/userinfo.profile"
+);
+
+export { auth, providerPublic, persist };
 export default db;

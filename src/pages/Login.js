@@ -1,16 +1,16 @@
 import { Button } from "@material-ui/core";
 import React from "react";
-import { auth, provider } from "../firebase";
+import { auth, providerPublic } from "../firebase";
 import { actionTypes } from "../reducer";
 import { useStateValue } from "../StateProvider";
 
 function Login() {
   // dispatch used to update datalayer on StateProvider
-  const [, dispatch] = useStateValue();
+  const [{ user }, dispatch] = useStateValue();
 
   const signIn = () => {
     auth
-      .signInWithPopup(provider)
+      .signInWithPopup(providerPublic)
       .then((result) => {
         // console.log(result);
         dispatch({

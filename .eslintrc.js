@@ -7,8 +7,10 @@ module.exports = {
     "extends": [
         "eslint:recommended",
         "plugin:react/recommended",
-        "prettier",
-        "plugin:prettier/recommended"
+        "plugin:prettier/recommended",
+        "prettier/flowtype",
+    	"prettier/react",
+    	"prettier/standard"
     ],
     "parserOptions": {
         "ecmaFeatures": {

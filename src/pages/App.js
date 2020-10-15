@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { auth, persist } from "../firebase";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useStateValue } from "../StateProvider";
 import Chat from "../components/Chat";
@@ -8,6 +9,10 @@ import Sidebar from "../components/Sidebar";
 
 function App() {
   const [{ user }] = useStateValue();
+
+  useEffect(() => {
+    auth.setPersistence(persist);
+  }, []);
 
   return (
     <div className="app">

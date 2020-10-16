@@ -14,7 +14,7 @@ This project is using:
 
 ### Next feature
 
-- Persistent login(refresh not logged out)
+- Persistent login(refresh not logged out) (done by [Conor]("https://github.com/captnstarburst"))
 - Delete Button still buggy (done by [kafinsalim]("https://github.com/kafinsalim"))
 - Logout Button instead of refresh
 - Working search feature

@@ -1,5 +1,5 @@
 export const initialState = {
-  user: null,
+  user: JSON.parse(localStorage.getItem('user')),
 };
 
 export const actionTypes = {

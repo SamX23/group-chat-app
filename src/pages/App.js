@@ -11,11 +11,12 @@ import Sidebar from "../components/Sidebar";
 function App() {
   const [{ user }, dispatch] = useStateValue();
 
-  useEffect(() => {
-    auth.setPersistence(persist);
 
-    const listener = auth.onAuthStateChanged((authUser) => {
+  useEffect(() => {
+    const listener = auth.onAuthStateChanged((user) => {
       console.log(auth.currentUser.providerData);
+      localStorage.setItem('user', JSON.stringify(user));
+
       dispatch({
         type: actionTypes.SET_USER,
         user: auth.currentUser.providerData[0],
@@ -25,7 +26,7 @@ function App() {
     return function () {
       listener();
     };
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="app">

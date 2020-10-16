@@ -1,5 +1,5 @@
 export const initialState = {
-  user: JSON.parse(localStorage.getItem('user')),
+  user: JSON.parse(localStorage.getItem("user")),
 };
 
 export const actionTypes = {
@@ -13,6 +13,12 @@ const reducer = (state, action) => {
     case actionTypes.SET_USER:
       return {
         //   let everything inside ...state but add more user:action.user
+        ...state,
+        user: action.user,
+      };
+
+    case actionTypes.REMOVE_USER:
+      return {
         ...state,
         user: action.user,
       };

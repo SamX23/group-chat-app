@@ -54,7 +54,6 @@ function Chat() {
   const sendMessage = (e) => {
     // Prevent refresh when hit the enter
     e.preventDefault();
-    console.log("Typed: ", input);
 
     db.collection("rooms")
       .doc(roomId)

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { auth, persist } from "../firebase";
+import { auth } from "../firebase";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { actionTypes } from "../reducer";
 import { useStateValue } from "../StateProvider";
@@ -11,15 +11,13 @@ import Sidebar from "../components/Sidebar";
 function App() {
   const [{ user }, dispatch] = useStateValue();
 
-
   useEffect(() => {
-    const listener = auth.onAuthStateChanged((user) => {
-      console.log(auth.currentUser.providerData);
-      localStorage.setItem('user', JSON.stringify(user));
+    const listener = auth.onAuthStateChanged((authUser) => {
+      localStorage.setItem("user", JSON.stringify(authUser));
 
       dispatch({
         type: actionTypes.SET_USER,
-        user: auth.currentUser.providerData[0],
+        user: authUser,
       });
     });
 

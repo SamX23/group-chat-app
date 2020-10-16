@@ -12,7 +12,6 @@ function Login() {
     auth
       .signInWithPopup(providerPublic)
       .then((result) => {
-        // console.log(result);
         dispatch({
           type: actionTypes.SET_USER,
           user: result.user,

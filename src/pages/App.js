@@ -22,7 +22,6 @@ function App() {
         <div className="app__body">
           <Router>
             <Sidebar />
-
             <Switch>
               <Route path="/rooms/:roomId">
                 <Chat />

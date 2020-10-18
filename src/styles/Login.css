@@ -1,23 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
 .login {
-  background-color: #f8f8f8;
+  background-image: url("https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png");
   height: 100vh;
   width: 100vw;
   display: grid;
   place-items: center;
 }
 
+.login__text {
+  color: #1d1d1d;
+  font-family: 'Rubik', sans-serif;
+  font-size: larger;
+  text-shadow: 2px 2px rgba(0, 0, 0, 0.597);
+  cursor: crosshair;
+  border-bottom: 0.1px groove #1d1d1d;
+}
+
+
 .login__container {
   padding: 100px;
   text-align: center;
-  background-color: white;
-  border-radius: 10px;
-  border: 3px solid;
-  animation: lineRGB 3s infinite;
-  transition: 0.2s;
+  background-image: url("assets/Whatsapp-Wallpaper-112.jpg");
+  background-position: center;
+  background-size: 97.5% 97.5%;
+  background-color: #13683f;
+  background-repeat: space;
+  border-radius: 12.5px;
+  border: 4px ridge;
+  animation: lineRGB 1s infinite;
+  transition: all 0.3s ease-in-out;
+}
+
+iframe {
+  border: none;
+  padding-bottom: 12%;
+}
+
+.giphy-embed {
+  size: 200%;
+  width: 100%; 
+  height: 100%;
 }
 
 .login__container:hover {
-  box-shadow: 0px 0px 40px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 35px 0px rgba(0, 0, 0, 0.75), 0px 0px 120px 0px rgb(92, 209, 157);
 }
 
 .login__container > img {
@@ -30,6 +57,7 @@
   text-transform: inherit !important;
   background-color: #0a8d4d !important;
   color: white;
+  transition-duration: 1s;
 }
 
 .login__container > button:active {
@@ -37,24 +65,29 @@
   top: 2px;
 }
 
+.login__container > button:hover {
+  color: #C1BEBA;
+}
+
+
 @keyframes lineRGB {
   0% {
-    border-color: rgba(48, 200, 214);
+    border-color: #a8ff78;
   }
 
   25% {
-    border-color: rgb(255, 48, 48);
+    border-color: #78ffd6;
   }
 
   50% {
-    border-color: rgb(84, 255, 62);
+    border-color: #11998e;
   }
 
   75% {
-    border-color: rgb(74, 33, 255);
+    border-color: #38ef7d;
   }
 
   100% {
-    border-color: rgba(48, 200, 214);
+    border-color: #a8ff78;
   }
 }

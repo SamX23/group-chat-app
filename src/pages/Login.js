@@ -23,12 +23,11 @@ function Login() {
   return (
     <div className="login">
       <div className="login__container">
-        <img
-          src="https://image.freepik.com/free-vector/cute-bot-say-users-hello-chatbot-greets-online-consultation_80328-195.jpg"
-          alt="Chat logo"
-        />
+        <div className="giphy-embed">
+          <iframe src="https://giphy.com/embed/QYkX9IMHthYn0Y3pcG"></iframe>
+        </div>
         <div className="login__text">
-          <h1>Group Chat App!</h1>
+          <h1>Group Chat App</h1>
         </div>
         <Button onClick={signIn}>Sign In With Google</Button>
       </div>

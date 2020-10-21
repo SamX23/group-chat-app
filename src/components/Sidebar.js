@@ -46,6 +46,11 @@ function Sidebar() {
     }
   };
 
+  const toggle = () => {
+    let actionToggle = document.querySelector(".option");
+    actionToggle.classList.toggle("active");
+  };
+
   return (
     <div className="sidebar">
       <div className="sidebar__header">
@@ -57,8 +62,18 @@ function Sidebar() {
           <IconButton onClick={createChat}>
             <ChatIcon />
           </IconButton>
-          <IconButton>
+          <IconButton className="sidebar__option" onClick={toggle}>
             <MoreVert />
+            <ul className="option">
+              <li>
+                <img src="https://img.icons8.com/fluent-systems-regular/30/000000/settings.png" />
+                Settings
+              </li>
+              <li>
+                <img src="https://img.icons8.com/windows/32/000000/exit.png" />
+                Log Out
+              </li>
+            </ul>
           </IconButton>
         </div>
       </div>

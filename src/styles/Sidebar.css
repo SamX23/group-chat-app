@@ -57,3 +57,55 @@
   background-color: white;
   overflow: auto;
 }
+
+.sidebar__option {
+  position: relative;
+}
+
+.option {
+  position: absolute;
+  top: 14px;
+  left: 18px;
+  min-width: 150px;
+  padding: 20px 20px 20px 20px;
+  opacity: 0;
+  visibility: hidden;
+  border-radius: 2px;
+  transition: 0.3s ease;
+  background-color: rgb(255, 255, 255);
+  box-shadow: -1px 4px 20px -6px rgba(0, 0, 0, 0.5);
+  z-index: 2;
+}
+
+.option li {
+  font-size: 15px;
+  list-style: none;
+  display: flex;
+  justify-content: flex start;
+  padding: 8px 0;
+  align-items: center;
+  color: rgb(0, 0, 0);
+  opacity: 0.6;
+  transform: scale(0.8);
+}
+
+.option li img {
+  margin-right: 5px;
+}
+
+.option li:not(:last-child) {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.option li:hover {
+  font-weight: bolder;
+  opacity: 0.7;
+}
+
+.option.active {
+  opacity: 1;
+  top: 16px;
+  left: 20px;
+  visibility: visible;
+  transition: 0.3s;
+}

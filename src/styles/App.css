@@ -4,12 +4,3 @@
   background-color: #dadbd3;
   height: 100vh;
 }
-
-.app__body {
-  display: flex;
-  background-color: #ededed;
-  margin-top: -30px;
-  height: 90vh;
-  width: 90vw;
-  box-shadow: -1px 4px 20px -6px rgba(0, 0, 0, 0.5);
-}

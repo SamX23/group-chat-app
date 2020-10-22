@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useStateValue } from "../StateProvider";
+import React, { lazy, Suspense, useEffect, useState } from "react";
+import { useStateValue } from "../store/StateProvider";
 
 import { Avatar, IconButton } from "@material-ui/core";
 import {
@@ -9,11 +9,12 @@ import {
   SearchOutlined,
 } from "@material-ui/icons";
 
-import SidebarChat from "./SidebarChat";
 import db from "../firebase";
 import firebase from "firebase";
 
-function Sidebar() {
+const SidebarChat = lazy(() => import("./SidebarChat"));
+
+export default function Sidebar() {
   const [rooms, setRooms] = useState([]);
   const [{ user }] = useStateValue();
 
@@ -66,11 +67,17 @@ function Sidebar() {
             <MoreVert />
             <ul className="option">
               <li>
-                <img src="https://img.icons8.com/fluent-systems-regular/30/000000/settings.png" />
+                <img
+                  src="https://img.icons8.com/fluent-systems-regular/30/000000/settings.png"
+                  alt="setting icon"
+                />
                 Settings
               </li>
               <li>
-                <img src="https://img.icons8.com/windows/32/000000/exit.png" />
+                <img
+                  src="https://img.icons8.com/windows/32/000000/exit.png"
+                  alt="logout icon"
+                />
                 Log Out
               </li>
             </ul>
@@ -85,13 +92,13 @@ function Sidebar() {
         </div>
       </div>
 
-      <div className="sidebar__chats">
-        {rooms.map((room) => (
-          <SidebarChat key={room.id} id={room.id} name={room.data.name} />
-        ))}
-      </div>
+      <Suspense fallback={<div>Loading ...</div>}>
+        <div className="sidebar__chats">
+          {rooms.map((room) => (
+            <SidebarChat key={room.id} id={room.id} name={room.data.name} />
+          ))}
+        </div>
+      </Suspense>
     </div>
   );
 }
-
-export default Sidebar;

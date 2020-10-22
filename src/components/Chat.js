@@ -9,7 +9,7 @@ import {
 
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { useStateValue } from "../StateProvider";
+import { useStateValue } from "../store/StateProvider";
 
 import db from "../firebase";
 import firebase from "firebase";

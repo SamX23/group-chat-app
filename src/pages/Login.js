@@ -1,11 +1,12 @@
 import { Button } from "@material-ui/core";
 import React from "react";
 import { auth, providerPublic } from "../firebase";
-import { actionTypes } from "../reducer";
-import { useStateValue } from "../StateProvider";
+import { actionTypes } from "../store/reducer";
+import { useStateValue } from "../store/StateProvider";
 
-function Login() {
+export default function Login() {
   // dispatch used to update datalayer on StateProvider
+  // eslint-disable-next-line
   const [{ user }, dispatch] = useStateValue();
 
   const signIn = () => {
@@ -23,8 +24,11 @@ function Login() {
   return (
     <div className="login">
       <div className="login__container">
-        <div className="giphy-embed">
-          <iframe src="https://giphy.com/embed/QYkX9IMHthYn0Y3pcG"></iframe>
+        <div className="login__containerImage">
+          <img
+            src="https://media.giphy.com/media/QYkX9IMHthYn0Y3pcG/giphy.gif"
+            alt="login gif"
+          />
         </div>
         <div className="login__text">
           <h1>Group Chat App</h1>
@@ -34,5 +38,3 @@ function Login() {
     </div>
   );
 }
-
-export default Login;

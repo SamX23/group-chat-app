@@ -1,6 +1,5 @@
 import React, { lazy, Suspense, useEffect, useState } from "react";
 import { useStateValue } from "../store/StateProvider";
-import { actionTypes } from "../store/reducer";
 import { auth } from "../firebase";
 
 import { Avatar, IconButton } from "@material-ui/core";
@@ -13,12 +12,13 @@ import {
 
 import db from "../firebase";
 import firebase from "firebase";
+import { Link } from "react-router-dom";
 
 const SidebarChat = lazy(() => import("./SidebarChat"));
 
 export default function Sidebar() {
   const [rooms, setRooms] = useState([]);
-  const [{ user }, dispatch] = useStateValue();
+  const [{ user }] = useStateValue();
 
   // Everytime sidebar.js loaded, it will setRooms from snapshot
   useEffect(() => {
@@ -63,7 +63,9 @@ export default function Sidebar() {
   return (
     <div className="sidebar">
       <div className="sidebar__header">
-        <Avatar src={user?.photoURL} />
+        <Link to="/">
+          <Avatar src={user?.photoURL} />
+        </Link>
         <div className="sidebar__headerRight">
           <IconButton>
             <DonutLarge />
@@ -86,7 +88,7 @@ export default function Sidebar() {
                   src="https://img.icons8.com/windows/32/000000/exit.png"
                   alt="logout icon"
                 />
-                Log Out
+                Sign Out
               </li>
             </ul>
           </IconButton>

@@ -14,9 +14,9 @@ This project is using:
 
 ### Next feature
 
-- Persistent login(refresh not logged out) (done by [Conor]("https://github.com/captnstarburst"))
-- Delete Button still buggy (done by [kafinsalim]("https://github.com/kafinsalim"))
-- Logout Button [DonniHusnan]("https://github.com/donnihusnan")
+- Persistent login(refresh not logged out) (done by [Conor](https://github.com/captnstarburst))
+- Delete Button still buggy (done by [kafinsalim](https://github.com/kafinsalim))
+- Logout Button (done by [DonniHusnan](https://github.com/donnihusnan))
 - Working search feature
 - Emoticon working
 - More styling

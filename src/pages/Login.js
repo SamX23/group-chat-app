@@ -12,10 +12,10 @@ export default function Login() {
   const signIn = () => {
     auth
       .signInWithPopup(providerPublic)
-      .then((result) => {
+      .then((authUser) => {
         dispatch({
           type: actionTypes.SET_USER,
-          user: result.user,
+          user: authUser.user,
         });
       })
       .catch((error) => alert(error.message));

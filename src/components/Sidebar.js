@@ -1,5 +1,7 @@
 import React, { lazy, Suspense, useEffect, useState } from "react";
 import { useStateValue } from "../store/StateProvider";
+import { actionTypes } from "../store/reducer";
+import { auth } from "../firebase";
 
 import { Avatar, IconButton } from "@material-ui/core";
 import {
@@ -16,7 +18,7 @@ const SidebarChat = lazy(() => import("./SidebarChat"));
 
 export default function Sidebar() {
   const [rooms, setRooms] = useState([]);
-  const [{ user }] = useStateValue();
+  const [{ user }, dispatch] = useStateValue();
 
   // Everytime sidebar.js loaded, it will setRooms from snapshot
   useEffect(() => {
@@ -47,9 +49,15 @@ export default function Sidebar() {
     }
   };
 
-  const toggle = () => {
+  const toggleOption = () => {
     let actionToggle = document.querySelector(".option");
     actionToggle.classList.toggle("active");
+  };
+
+  const logout = () => {
+    if (user) {
+      auth.signOut().then(() => localStorage.removeItem("user"));
+    }
   };
 
   return (
@@ -63,7 +71,7 @@ export default function Sidebar() {
           <IconButton onClick={createChat}>
             <ChatIcon />
           </IconButton>
-          <IconButton className="sidebar__option" onClick={toggle}>
+          <IconButton className="sidebar__option" onClick={toggleOption}>
             <MoreVert />
             <ul className="option">
               <li>
@@ -73,7 +81,7 @@ export default function Sidebar() {
                 />
                 Settings
               </li>
-              <li>
+              <li onClick={logout}>
                 <img
                   src="https://img.icons8.com/windows/32/000000/exit.png"
                   alt="logout icon"

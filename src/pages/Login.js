@@ -24,16 +24,12 @@ export default function Login() {
   return (
     <div className="login">
       <div className="login__container">
-        <div className="login__containerImage">
-          <img
-            src="https://media.giphy.com/media/QYkX9IMHthYn0Y3pcG/giphy.gif"
-            alt="login gif"
-          />
-        </div>
         <div className="login__text">
-          <h1>Group Chat App</h1>
+          <h1>Simple Chat App</h1>
         </div>
-        <Button onClick={signIn}>Sign In With Google</Button>
+        <div className="login__button">
+          <Button onClick={signIn}>Sign In With Google</Button>
+        </div>
       </div>
     </div>
   );

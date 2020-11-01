@@ -79,6 +79,16 @@ function Chat() {
     setInput("");
   };
 
+  const today = new Date().toLocaleString();
+  const showDate = (message) => {
+    const date = new Date(message.timestamp?.toDate()).toLocaleString();
+    if (date === today) {
+      return "recently";
+    } else {
+      return date;
+    }
+  };
+
   return (
     <div className="chat">
       <div className="chat__header">
@@ -91,7 +101,7 @@ function Chat() {
               Last update{" "}
               {new Date(
                 messages[messages.length - 1]?.timestamp?.toDate()
-              ).toUTCString()}
+              ).toLocaleString()}
             </p>
           )}
         </div>
@@ -121,7 +131,7 @@ function Chat() {
             {message.message}
             <span className="chat__timestamp">
               {/* Simplest method handling timestamp on firebase */}
-              {new Date(message.timestamp?.toDate()).toUTCString()}
+              {showDate(message)}
             </span>
           </p>
         ))}

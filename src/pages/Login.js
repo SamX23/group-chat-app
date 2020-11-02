@@ -3,7 +3,11 @@ import { auth, providerPublic } from "../firebase";
 import { actionTypes } from "../store/reducer";
 import { useStateValue } from "../store/StateProvider";
 
-import { Container, Box, Button } from "@material-ui/core";
+// Styling faster imported one by one
+import Container from "@material-ui/core/Container";
+import Box from "@material-ui/core/Box";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
 import { styled } from "@material-ui/core/styles";
 import { LineRGB } from "../styles/animation";
 
@@ -17,7 +21,7 @@ export default function Login() {
   useStyles();
 
   // Styling
-  const Login = styled(Box)({
+  const LoginBackground = styled(Box)({
     backgroundImage:
       "url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png')",
     height: "100vh",
@@ -43,6 +47,33 @@ export default function Login() {
     },
   });
 
+  const LoginText = styled(Typography)({
+    color: "white",
+    fontFamily: "sans-serif",
+    textShadow: "2px 2px rgba(0, 0, 0, 0.597)",
+  });
+
+  const LoginButton = styled(Button)({
+    fontFamily: "'Rubik', sans-serif",
+    padding: "15px",
+    marginTop: "15px",
+    fontWeight: "bold",
+    fontSize: "15px",
+    borderRadius: "10px",
+    textTransform: "inherit !important",
+    backgroundColor: "#0a8d4d !important",
+    color: "white",
+    transitionDuration: "1s",
+    "&:active": {
+      position: "relative",
+      top: "2px",
+    },
+
+    "&:hover": {
+      backgroundColor: "green !important",
+    },
+  });
+
   const signIn = () => {
     auth
       .signInWithPopup(providerPublic)
@@ -56,15 +87,11 @@ export default function Login() {
   };
 
   return (
-    <Login>
-      <LoginContainer maxWidth="sm" className={LineRGB}>
-        <Box className="login__text">
-          <h1>Group Chat App</h1>
-        </Box>
-        <Box className="login__button">
-          <Button onClick={signIn}>Sign In With Google</Button>
-        </Box>
+    <LoginBackground>
+      <LoginContainer maxWidth="sm">
+        <LoginText variant="h3">Group Chat App</LoginText>
+        <LoginButton onClick={signIn}>Sign In With Google</LoginButton>
       </LoginContainer>
-    </Login>
+    </LoginBackground>
   );
 }

@@ -1,4 +1,4 @@
-# WhatsApp Clone (Working Group Chat Application)
+# Group Chat Web (Inspired from WhatsApp Web)
 
 Hi, I have made a simple chat app inspired by WhatsApp web version which built using React, I'm still trying to make all features works fine.
 

@@ -8,7 +8,8 @@ This project is using:
 - React, react router dom and state provider
 - Material UI
 - [Random profile API](https://avatars.dicebear.com/)
-- Firebase (Hosting, FireStore, auth)
+- Firebase (FireStore, auth)
+- Vercel (Hosting)
 
 ## Started on 15 September 2020
 

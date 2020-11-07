@@ -67,9 +67,6 @@ export default function Sidebar() {
           <Avatar src={user?.photoURL} />
         </Link>
         <div className="sidebar__headerRight">
-          <IconButton>
-            <DonutLarge />
-          </IconButton>
           <IconButton onClick={createChat}>
             <ChatIcon />
           </IconButton>

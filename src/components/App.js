@@ -8,6 +8,7 @@ import Footer from "./Footer";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 import { Grid } from "@material-ui/core";
+import { styled } from "@material-ui/core/styles";
 
 export default function App() {
   const [{ user }, dispatch] = useStateValue();
@@ -27,10 +28,21 @@ export default function App() {
     };
   }, [dispatch]);
 
+  const LoginBackground = styled(Grid)({
+    backgroundImage:
+      "url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png')",
+  });
+
   return (
-    <Grid>
+    <LoginBackground
+      container
+      direction="column"
+      alignItems="center"
+      justify="center"
+      style={{ minHeight: "100vh" }}
+    >
       {!user ? <Login /> : <Home />}
       <Footer />
-    </Grid>
+    </LoginBackground>
   );
 }

@@ -5,15 +5,21 @@
 }
 
 .chat__header {
-  padding: 20px;
   display: flex;
+  padding: 15px 5px;
+  justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid lightgray;
 }
 
+.chat__header > .MuiSvgIcon-root {
+  margin: 5px;
+  color: gray;
+}
+
 .chat__headerInfo {
   flex: 1;
-  padding-left: 20px;
+  padding-left: 10px;
 }
 
 .chat__headerInfo > h3 {
@@ -25,18 +31,18 @@
   color: grey;
 }
 
-.chat__headerRight {
+.chat__headerMenu {
   display: flex;
   justify-content: space-between;
-  min-width: 100px;
 }
 
 .chat__body {
   flex: 1;
+  width: auto;
   background-image: url("https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png");
   background-repeat: repeat;
   background-position: center;
-  padding: 30px;
+  padding: 10px;
   overflow: auto;
 }
 
@@ -67,7 +73,7 @@
   font-size: x-small;
 }
 
-.chat__footer {
+.chat__input {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -75,12 +81,13 @@
   border-top: 1px solid lightgray;
 }
 
-.chat__footer > form {
+.chat__input > form {
   flex: 1;
   display: flex;
+  padding-right: 20px;
 }
 
-.chat__footer > form > input {
+.chat__input > form > input {
   flex: 1;
   border-radius: 30px;
   border: none;
@@ -88,11 +95,11 @@
 }
 
 /* Tips to button function but not showing */
-.chat__footer > form > button {
+.chat__input > form > button {
   display: none;
 }
 
-.chat__footer > .MuiSvgIcon-root {
+.chat__input > .MuiSvgIcon-root {
   margin: 10px;
   color: gray;
 }

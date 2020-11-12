@@ -3,13 +3,7 @@ import { useParams } from "react-router-dom";
 import { useStateValue } from "../store/StateProvider";
 
 import { Avatar, IconButton } from "@material-ui/core";
-import {
-  AttachFile,
-  InsertEmoticon,
-  Mic,
-  MoreVert,
-  SearchOutlined,
-} from "@material-ui/icons";
+import { InsertEmoticon, MoreVert, SearchOutlined } from "@material-ui/icons";
 
 // import "emoji-mart/css/emoji-mart.css";
 // import { Picker } from "emoji-mart";
@@ -109,12 +103,9 @@ function Chat() {
           )}
         </div>
 
-        <div className="chat__headerRight">
+        <div className="chat__headerMenu">
           <IconButton>
             <SearchOutlined />
-          </IconButton>
-          <IconButton>
-            <AttachFile />
           </IconButton>
           <IconButton>
             <MoreVert />
@@ -140,8 +131,10 @@ function Chat() {
         ))}
       </div>
 
-      <div className="chat__footer">
-        <InsertEmoticon />
+      <div className="chat__input">
+        <IconButton>
+          <InsertEmoticon />
+        </IconButton>
         {/* <Picker onSelect={this.addEmoji} /> */}
         <form>
           <input
@@ -154,7 +147,6 @@ function Chat() {
             Send a message
           </button>
         </form>
-        <Mic />
       </div>
     </div>
   );

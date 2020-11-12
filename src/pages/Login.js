@@ -4,12 +4,12 @@ import { actionTypes } from "../store/reducer";
 import { useStateValue } from "../store/StateProvider";
 
 // Styling faster imported one by one
-import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { styled } from "@material-ui/core/styles";
-import { LineRGB } from "../styles/animation";
+import { LineRGB } from "../components/animations/animation";
+import GoogleButton from "react-google-button";
 
 export default function Login() {
   // dispatch used to update datalayer on StateProvider
@@ -21,14 +21,9 @@ export default function Login() {
   useStyles();
 
   // Styling
-  const LoginBackground = styled(Grid)({
-    backgroundImage:
-      "url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png')",
-  });
-
   const LoginContainer = styled(Grid)({
-    padding: "75px",
-    margin: "15px",
+    padding: "50px",
+    margin: "20px",
     textAlign: "center",
     backgroundImage: "url('/login_background.jpg')",
     backgroundSize: "cover",
@@ -36,7 +31,7 @@ export default function Login() {
     borderRadius: "25px",
     border: "4px ridge",
     animation: "lineRGB 1s infinite",
-    transition: "all 0.3s ease-in-out",
+    transition: "all 1s ease-in-out",
 
     "&:hover": {
       boxShadow:
@@ -45,30 +40,14 @@ export default function Login() {
   });
 
   const LoginText = styled(Typography)({
+    margin: "25px auto",
     color: "white",
     fontFamily: "sans-serif",
     textShadow: "2px 2px rgba(0, 0, 0, 0.597)",
   });
 
-  const LoginButton = styled(Button)({
-    fontFamily: "'Rubik', sans-serif",
-    padding: "15px",
-    marginTop: "15px",
-    fontWeight: "bold",
-    fontSize: "15px",
-    borderRadius: "10px",
-    textTransform: "inherit !important",
-    backgroundColor: "#0a8d4d !important",
-    color: "white",
-    transitionDuration: "1s",
-    "&:active": {
-      position: "relative",
-      top: "2px",
-    },
-
-    "&:hover": {
-      backgroundColor: "green !important",
-    },
+  const LoginButton = styled(GoogleButton)({
+    margin: "25px auto",
   });
 
   const signIn = () => {
@@ -84,17 +63,9 @@ export default function Login() {
   };
 
   return (
-    <LoginBackground
-      container
-      direction="column"
-      alignItems="center"
-      justify="center"
-      style={{ minHeight: "100vh" }}
-    >
-      <LoginContainer item>
-        <LoginText variant="h3">Group Chat App</LoginText>
-        <LoginButton onClick={signIn}>Sign In With Google</LoginButton>
-      </LoginContainer>
-    </LoginBackground>
+    <LoginContainer>
+      <LoginText variant="h3">Group Chat App</LoginText>
+      <LoginButton onClick={signIn} />
+    </LoginContainer>
   );
 }

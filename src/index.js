@@ -4,15 +4,13 @@ import "./styles/index.css";
 import { StateProvider } from "./store/StateProvider";
 import reducer, { initialState } from "./store/reducer";
 
-import CssBaseline from "@material-ui/core/CssBaseline";
-import { Box } from "@material-ui/core";
+import Loading from "./components/animations/Loading";
 
 const App = lazy(() => import("./components/App"));
 
 ReactDOM.render(
   <StateProvider initialState={initialState} reducer={reducer}>
-    <Suspense fallback={<Box>Loading App...</Box>}>
-      <CssBaseline />
+    <Suspense fallback={<Loading />}>
       <App />
     </Suspense>
   </StateProvider>,

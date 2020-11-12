@@ -7,6 +7,7 @@ import { useStateValue } from "../store/StateProvider";
 import Footer from "./Footer";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
+import { Grid } from "@material-ui/core";
 
 export default function App() {
   const [{ user }, dispatch] = useStateValue();
@@ -27,9 +28,9 @@ export default function App() {
   }, [dispatch]);
 
   return (
-    <div className="app">
+    <Grid>
       {!user ? <Login /> : <Home />}
       <Footer />
-    </div>
+    </Grid>
   );
 }

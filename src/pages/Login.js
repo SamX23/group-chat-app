@@ -5,7 +5,7 @@ import { useStateValue } from "../store/StateProvider";
 
 // Styling faster imported one by one
 import Container from "@material-ui/core/Container";
-import Box from "@material-ui/core/Box";
+import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { styled } from "@material-ui/core/styles";
@@ -21,17 +21,14 @@ export default function Login() {
   useStyles();
 
   // Styling
-  const LoginBackground = styled(Box)({
+  const LoginBackground = styled(Grid)({
     backgroundImage:
       "url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png')",
-    height: "100vh",
-    width: "100vw",
-    display: "grid",
-    placeItems: "center",
   });
 
-  const LoginContainer = styled(Container)({
-    padding: "100px",
+  const LoginContainer = styled(Grid)({
+    padding: "75px",
+    margin: "15px",
     textAlign: "center",
     backgroundImage: "url('/login_background.jpg')",
     backgroundSize: "cover",
@@ -87,8 +84,14 @@ export default function Login() {
   };
 
   return (
-    <LoginBackground>
-      <LoginContainer maxWidth="sm">
+    <LoginBackground
+      container
+      direction="column"
+      alignItems="center"
+      justify="center"
+      style={{ minHeight: "100vh" }}
+    >
+      <LoginContainer item>
         <LoginText variant="h3">Group Chat App</LoginText>
         <LoginButton onClick={signIn}>Sign In With Google</LoginButton>
       </LoginContainer>

@@ -24,9 +24,9 @@ export default function Footer() {
     <Footer>
       <Typography variant="body1">
         Made with{" "}
-        <Box component="span" role="img" aria-labelledby="love">
+        <span role="img" aria-label="love">
           ♥️
-        </Box>{" "}
+        </span>{" "}
         by
         <Link href="https://samx23.github.io"> Sami Kalammallah</Link> ©{" "}
         {new Date().getFullYear()}

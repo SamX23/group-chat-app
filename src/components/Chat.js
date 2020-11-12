@@ -1,3 +1,7 @@
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { useStateValue } from "../store/StateProvider";
+
 import { Avatar, IconButton } from "@material-ui/core";
 import {
   AttachFile,
@@ -7,9 +11,8 @@ import {
   SearchOutlined,
 } from "@material-ui/icons";
 
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { useStateValue } from "../store/StateProvider";
+// import "emoji-mart/css/emoji-mart.css";
+// import { Picker } from "emoji-mart";
 
 import db from "../firebase";
 import firebase from "firebase";
@@ -139,6 +142,7 @@ function Chat() {
 
       <div className="chat__footer">
         <InsertEmoticon />
+        {/* <Picker onSelect={this.addEmoji} /> */}
         <form>
           <input
             value={input}

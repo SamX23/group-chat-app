@@ -9,6 +9,7 @@ import Home from "../pages/Home";
 import Login from "../pages/Login";
 import { Grid } from "@material-ui/core";
 import { styled } from "@material-ui/core/styles";
+import NavBarTest from "./DropdownMenu";
 
 export default function App() {
   const [{ user }, dispatch] = useStateValue();
@@ -41,6 +42,7 @@ export default function App() {
       justify="center"
       style={{ minHeight: "100vh" }}
     >
+      {/* <NavBarTest /> */}
       {!user ? <Login /> : <Home />}
       <Footer />
     </LoginBackground>

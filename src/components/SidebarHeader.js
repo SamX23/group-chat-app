@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useStateValue } from "../store/StateProvider";
 import { Link } from "react-router-dom";
 import db from "../firebase";
@@ -10,6 +10,7 @@ import { Avatar, IconButton } from "@material-ui/core";
 
 function SidebarHeader({}) {
   const [{ user }] = useStateValue();
+  const [open, setOpen] = useState(false);
 
   const createChat = () => {
     const roomName = prompt("Please enter name for chat room");
@@ -51,6 +52,9 @@ function SidebarHeader({}) {
                   alt="setting icon"
                 />
                 Settings
+                <a href="#" onClick={() => setOpen(!open)}>
+                  Click
+                </a>
               </li>
               <li onClick={logout}>
                 <img

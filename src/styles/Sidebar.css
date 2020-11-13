@@ -36,19 +36,22 @@
 .sidebar__headerMenu {
   display: flex;
   justify-content: space-between;
-  padding: 20px;
+  padding: 10px;
+  align-items: center;
   border-right: 1px solid lightgray;
+}
+
+.sidebar__headerLeft {
+  padding: 12px;
 }
 
 .sidebar__headerRight {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  min-width: 10vw;
+  flex: 1;
+  justify-content: flex-end;
 }
 
 .sidebar__headerRight > .MuiSvgIcon-root {
-  margin-right: 2vw;
   font-size: 24px !important;
 }
 

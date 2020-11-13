@@ -36,9 +36,12 @@ function SidebarHeader({}) {
   return (
     <div className="sidebar__header">
       <div className="sidebar__headerMenu">
-        <Link to="/">
-          <Avatar src={user?.photoURL} />
-        </Link>
+        <div className="sidebar__headerLeft">
+          <Link to="/">
+            <Avatar src={user?.photoURL} />
+          </Link>
+        </div>
+
         <div className="sidebar__headerRight">
           <IconButton onClick={createChat}>
             <ChatIcon />

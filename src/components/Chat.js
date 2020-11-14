@@ -1,13 +1,11 @@
 import { useEffect, useState } from "react";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useStateValue } from "../store/StateProvider";
 import db from "../firebase";
 import firebase from "firebase";
-import { InsertEmoticon, MoreVert, SearchOutlined } from "@material-ui/icons";
+import { InsertEmoticon } from "@material-ui/icons";
 import IconButton from "@material-ui/core/IconButton";
-import Avatar from "@material-ui/core/Avatar";
-import Menu from "@material-ui/core/Menu";
-import MenuItem from "@material-ui/core/MenuItem";
+import ChatHeader from "./ChatHeader";
 
 export default function Chat() {
   const [input, setInput] = useState("");
@@ -15,9 +13,7 @@ export default function Chat() {
   const [roomName, setRoomName] = useState("");
   const [messages, setMessages] = useState([]);
   const [{ user }] = useStateValue();
-  const [anchorEl, setAnchorEl] = useState(null);
   const { roomId } = useParams([]);
-  const history = useHistory();
 
   // Everytime chat.js loaded, it will the roomId into name from snapshot based on roomId
   useEffect(() => {
@@ -54,7 +50,6 @@ export default function Chat() {
       .collection("messages")
       .add({
         message: input,
-        // user and displayname is from google login
         name: user.displayName,
         // global (server) timestamp
         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
@@ -81,63 +76,14 @@ export default function Chat() {
     }
   };
 
-  const toggleOption = (e) => {
-    setAnchorEl(e.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const deleteChat = (id) => {
-    let deleteConfirmation = window.confirm("Are you Sure ?");
-    if (deleteConfirmation) {
-      db.collection("rooms")
-        .doc(id)
-        .delete()
-        .then(() => history.push("/"))
-        .catch((e) => console.error("Error removing document: ", e));
-    }
-  };
-
   return (
     <div className="chat">
-      <div className="chat__header">
-        <Avatar src={`https://avatars.dicebear.com/api/human/${seed}.svg`} />
-        <div className="chat__headerInfo">
-          <h3>{roomName}</h3>
-          {messages.length > 0 && (
-            <p>
-              Last update{" "}
-              {new Date(
-                messages[messages.length - 1]?.timestamp?.toDate()
-              ).toLocaleString()}
-            </p>
-          )}
-        </div>
-        <div className="chat__headerMenu">
-          <IconButton>
-            <SearchOutlined />
-          </IconButton>
-          <IconButton
-            aria-controls="option-menu"
-            aria-haspopup="true"
-            className="sidebar__option"
-            onClick={toggleOption}
-          >
-            <MoreVert />
-          </IconButton>
-          <Menu
-            id="option-menu"
-            anchorEl={anchorEl}
-            keepMounted
-            open={Boolean(anchorEl)}
-            onClose={handleClose}
-          >
-            <MenuItem onClick={() => deleteChat(roomId)}>Delete Room</MenuItem>
-          </Menu>
-        </div>
-      </div>
+      <ChatHeader
+        seed={seed}
+        messages={messages}
+        roomName={roomName}
+        roomId={roomId}
+      />
       <div className="chat__body">
         {messages.map((message) => (
           <p

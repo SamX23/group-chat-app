@@ -1,8 +1,5 @@
 import { useEffect, useState } from "react";
 import Avatar from "@material-ui/core/Avatar";
-import Button from "@material-ui/core/Button";
-
-import DeleteOutlineRoundedIcon from "@material-ui/icons/DeleteOutlineRounded";
 import { Link } from "react-router-dom";
 import db from "../firebase";
 

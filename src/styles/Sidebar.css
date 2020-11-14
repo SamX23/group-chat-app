@@ -35,8 +35,8 @@
 
 .sidebar__headerMenu {
   display: flex;
+  min-height: 80px;
   justify-content: space-between;
-  padding: 10px;
   align-items: center;
   border-right: 1px solid lightgray;
 }
@@ -49,10 +49,6 @@
   display: flex;
   flex: 1;
   justify-content: flex-end;
-}
-
-.sidebar__headerRight > .MuiSvgIcon-root {
-  font-size: 24px !important;
 }
 
 .sidebar__chats {

@@ -1,26 +1,21 @@
-import React from "react";
 import { auth, providerPublic } from "../firebase";
 import { actionTypes } from "../store/reducer";
 import { useStateValue } from "../store/StateProvider";
 
-// Styling faster imported one by one
 import Grid from "@material-ui/core/Grid";
-import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { styled } from "@material-ui/core/styles";
 import { LineRGB } from "../components/animations/animation";
 import GoogleButton from "react-google-button";
 
 export default function Login() {
-  // dispatch used to update datalayer on StateProvider
-  // eslint-disable-next-line
-  const [{ user }, dispatch] = useStateValue();
+  // Optimized soon
+  const [{}, dispatch] = useStateValue();
 
   // Optimized soon
   const useStyles = LineRGB;
   useStyles();
 
-  // Styling
   const LoginContainer = styled(Grid)({
     padding: "50px",
     margin: "20px",

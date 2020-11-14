@@ -1,4 +1,6 @@
-import firebase from "firebase";
+import firebase from "firebase/app";
+import "firebase/firestore";
+import "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDH_Gdh0c6z4i6_S1tlsBXlsb3TusoCkP0",
@@ -14,9 +16,7 @@ const firebaseConfig = {
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 const db = firebaseApp.firestore();
 const auth = firebase.auth();
-// Google login
 const persist = firebase.auth.Auth.Persistence.SESSION;
-
 const provider = new firebase.auth.GoogleAuthProvider();
 const providerPublic = provider.addScope(
   "https://www.googleapis.com/auth/userinfo.profile"

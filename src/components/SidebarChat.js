@@ -1,10 +1,12 @@
-import { Avatar, Button } from "@material-ui/core";
+import { useEffect, useState } from "react";
+import Avatar from "@material-ui/core/Avatar";
+import Button from "@material-ui/core/Button";
+
 import DeleteOutlineRoundedIcon from "@material-ui/icons/DeleteOutlineRounded";
-import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import db from "../firebase";
 
-function SidebarChat({ id, name }) {
+export default function SidebarChat({ id, name }) {
   const [seed, setSeed] = useState("");
   const [messages, setMessages] = useState("");
 
@@ -19,14 +21,12 @@ function SidebarChat({ id, name }) {
           setMessages(snapshot.docs.map((doc) => doc.data()))
         );
     }
-    // id as dependancy                                                                ndency
   }, [id]);
 
   useEffect(() => {
     setSeed(Math.floor(Math.random() * 5000));
   }, []);
 
-  // delete component
   const deleteChat = (id) => {
     let deleteConfirmation = window.confirm("Are you Sure ?");
     if (deleteConfirmation) {
@@ -57,5 +57,3 @@ function SidebarChat({ id, name }) {
     </div>
   );
 }
-
-export default SidebarChat;

@@ -1,11 +1,9 @@
-import React, { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useReducer } from "react";
 
 // Datalayer preparation and where the datalayer placed(lives)
 export const StateContext = createContext();
-
 export const StateProvider = ({ reducer, initialState, children }) => (
   <StateContext.Provider value={useReducer(reducer, initialState)}>
-    {/* children = App */}
     {children}
   </StateContext.Provider>
 );

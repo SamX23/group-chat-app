@@ -1,6 +1,5 @@
-import React, { lazy, Suspense } from "react";
+import { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
 import Box from "@material-ui/core/Box";
 import { styled } from "@material-ui/core/styles";
 import Loading from "../components/animations/Loading";
@@ -17,7 +16,6 @@ export default function Home() {
     width: "90vw",
     boxShadow: "-1px 4px 20px -6px rgba(0, 0, 0, 0.5)",
   });
-
   return (
     <Suspense fallback={<Loading />}>
       <AppBody>

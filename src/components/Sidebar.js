@@ -1,18 +1,15 @@
-import React, { lazy, Suspense, useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import db from "../firebase";
-
 import Loading from "./animations/Loading";
 
-const SidebarHeader = lazy(() => import("./SidebarHeader"));
 const SidebarChat = lazy(() => import("./SidebarChat"));
+const SidebarHeader = lazy(() => import("./SidebarHeader"));
 
 export default function Sidebar() {
   const [rooms, setRooms] = useState([]);
 
-  // Everytime sidebar.js loaded, it will setRooms from snapshot
   useEffect(() => {
-    const unsubscribe = db
-      .collection("rooms")
+    db.collection("rooms")
       .orderBy("datecreated", "desc")
       .onSnapshot((snapshot) => {
         setRooms(
@@ -22,16 +19,11 @@ export default function Sidebar() {
           }))
         );
       });
-
-    return () => {
-      unsubscribe();
-    };
   }, []);
 
   return (
     <div className="sidebar">
       <SidebarHeader />
-
       <Suspense fallback={<Loading />}>
         <div className="sidebar__chats">
           {rooms.map((room) => (

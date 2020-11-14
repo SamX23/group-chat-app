@@ -1,29 +1,24 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useStateValue } from "../store/StateProvider";
-
-import { Avatar, IconButton } from "@material-ui/core";
-import { InsertEmoticon, MoreVert, SearchOutlined } from "@material-ui/icons";
-
-// import "emoji-mart/css/emoji-mart.css";
-// import { Picker } from "emoji-mart";
-
 import db from "../firebase";
 import firebase from "firebase";
+import { InsertEmoticon, MoreVert, SearchOutlined } from "@material-ui/icons";
+import IconButton from "@material-ui/core/IconButton";
+import Avatar from "@material-ui/core/Avatar";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
 
-function Chat() {
-  // Its like setter and getter to push and pull data from StateProvider
+export default function Chat() {
   const [input, setInput] = useState("");
   const [seed, setSeed] = useState("");
   const [roomName, setRoomName] = useState("");
   const [messages, setMessages] = useState([]);
   const [{ user }] = useStateValue();
-
+  const [anchorEl, setAnchorEl] = useState(null);
   const { roomId } = useParams([]);
 
   // Everytime chat.js loaded, it will the roomId into name from snapshot based on roomId
-  // a deleted name will be undefined after deletion, so add some handling here as a temporary solution
-  // the proper solution will be update the list after deletion
   useEffect(() => {
     if (roomId) {
       db.collection("rooms")
@@ -41,7 +36,6 @@ function Chat() {
         );
     }
     setInput("");
-    // trigger that also changes
   }, [roomId]);
 
   useEffect(() => {
@@ -49,7 +43,6 @@ function Chat() {
   }, [roomId]);
 
   const sendMessage = (e) => {
-    // Prevent refresh when hit the enter
     e.preventDefault();
 
     db.collection("rooms")
@@ -64,7 +57,6 @@ function Chat() {
       })
       .catch((e) => console.error("Error writing document: ", e));
 
-    // Update timestamp
     db.collection("rooms")
       .doc(roomId)
       .update({
@@ -72,7 +64,6 @@ function Chat() {
       })
       .catch((e) => console.error("Error writing document: ", e));
 
-    // Clear text after enter clicked
     setInput("");
   };
 
@@ -86,11 +77,25 @@ function Chat() {
     }
   };
 
+  const toggleOption = (e) => {
+    setAnchorEl(e.currentTarget);
+  };
+
+  const clickLogout = () => {
+    setAnchorEl(null);
+    if (user) {
+      auth.signOut().then(() => localStorage.removeItem("user"));
+    }
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
     <div className="chat">
       <div className="chat__header">
         <Avatar src={`https://avatars.dicebear.com/api/human/${seed}.svg`} />
-
         <div className="chat__headerInfo">
           <h3>{roomName}</h3>
           {messages.length > 0 && (
@@ -102,17 +107,29 @@ function Chat() {
             </p>
           )}
         </div>
-
         <div className="chat__headerMenu">
           <IconButton>
             <SearchOutlined />
           </IconButton>
-          <IconButton>
+          <IconButton
+            aria-controls="option-menu"
+            aria-haspopup="true"
+            className="sidebar__option"
+            onClick={toggleOption}
+          >
             <MoreVert />
           </IconButton>
+          <Menu
+            id="option-menu"
+            anchorEl={anchorEl}
+            keepMounted
+            open={Boolean(anchorEl)}
+            onClose={handleClose}
+          >
+            <MenuItem onClick={clickLogout}>Logout</MenuItem>
+          </Menu>
         </div>
       </div>
-
       <div className="chat__body">
         {messages.map((message) => (
           <p
@@ -130,7 +147,6 @@ function Chat() {
           </p>
         ))}
       </div>
-
       <div className="chat__input">
         <IconButton>
           <InsertEmoticon />
@@ -151,5 +167,3 @@ function Chat() {
     </div>
   );
 }
-
-export default Chat;

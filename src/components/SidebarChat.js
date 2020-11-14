@@ -27,17 +27,6 @@ export default function SidebarChat({ id, name }) {
     setSeed(Math.floor(Math.random() * 5000));
   }, []);
 
-  const deleteChat = (id) => {
-    let deleteConfirmation = window.confirm("Are you Sure ?");
-    if (deleteConfirmation) {
-      db.collection("rooms")
-        .doc(id)
-        .delete()
-        .then(() => console.log("Document successfully deleted!"))
-        .catch((e) => console.error("Error removing document: ", e));
-    }
-  };
-
   return (
     <div className="sidebarChat">
       <Link to={`/rooms/${id}`}>
@@ -49,11 +38,6 @@ export default function SidebarChat({ id, name }) {
           </div>
         </div>
       </Link>
-      <div className="sidebarChat__option">
-        <Button onClick={() => deleteChat(id)}>
-          <DeleteOutlineRoundedIcon />
-        </Button>
-      </div>
     </div>
   );
 }

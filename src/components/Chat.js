@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { useStateValue } from "../store/StateProvider";
 import db from "../firebase";
 import firebase from "firebase";
@@ -17,6 +17,7 @@ export default function Chat() {
   const [{ user }] = useStateValue();
   const [anchorEl, setAnchorEl] = useState(null);
   const { roomId } = useParams([]);
+  const history = useHistory();
 
   // Everytime chat.js loaded, it will the roomId into name from snapshot based on roomId
   useEffect(() => {
@@ -43,7 +44,7 @@ export default function Chat() {
 
   useEffect(() => {
     setSeed(Math.floor(Math.random() * 5000));
-  }, [roomId]);
+  }, []);
 
   const sendMessage = (e) => {
     e.preventDefault();
@@ -84,15 +85,19 @@ export default function Chat() {
     setAnchorEl(e.currentTarget);
   };
 
-  const clickLogout = () => {
-    setAnchorEl(null);
-    if (user) {
-      auth.signOut().then(() => localStorage.removeItem("user"));
-    }
-  };
-
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const deleteChat = (id) => {
+    let deleteConfirmation = window.confirm("Are you Sure ?");
+    if (deleteConfirmation) {
+      db.collection("rooms")
+        .doc(id)
+        .delete()
+        .then(() => history.push("/"))
+        .catch((e) => console.error("Error removing document: ", e));
+    }
   };
 
   return (
@@ -129,7 +134,7 @@ export default function Chat() {
             open={Boolean(anchorEl)}
             onClose={handleClose}
           >
-            <MenuItem onClick={clickLogout}>Logout</MenuItem>
+            <MenuItem onClick={() => deleteChat(roomId)}>Delete Room</MenuItem>
           </Menu>
         </div>
       </div>

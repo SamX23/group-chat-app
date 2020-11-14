@@ -20,22 +20,25 @@ export default function Chat() {
 
   // Everytime chat.js loaded, it will the roomId into name from snapshot based on roomId
   useEffect(() => {
+    let isMounted = true;
     if (roomId) {
       db.collection("rooms")
         .doc(roomId)
-        .onSnapshot(
-          (snapshot) => snapshot.data() && setRoomName(snapshot.data().name)
-        );
+        .onSnapshot((snapshot) => {
+          if (isMounted) snapshot.data() && setRoomName(snapshot.data().name);
+        });
 
       db.collection("rooms")
         .doc(roomId)
         .collection("messages")
         .orderBy("timestamp", "asc")
-        .onSnapshot((snapshot) =>
-          setMessages(snapshot.docs.map((doc) => doc.data()))
-        );
+        .onSnapshot((snapshot) => {
+          if (isMounted) setMessages(snapshot.docs.map((doc) => doc.data()));
+        });
     }
-    setInput("");
+    return () => {
+      isMounted = false;
+    };
   }, [roomId]);
 
   useEffect(() => {

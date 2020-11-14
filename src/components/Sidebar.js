@@ -9,7 +9,8 @@ export default function Sidebar() {
   const [rooms, setRooms] = useState([]);
 
   useEffect(() => {
-    db.collection("rooms")
+    const susbcribe = db
+      .collection("rooms")
       .orderBy("datecreated", "desc")
       .onSnapshot((snapshot) => {
         setRooms(
@@ -19,6 +20,7 @@ export default function Sidebar() {
           }))
         );
       });
+    return susbcribe;
   }, []);
 
   return (

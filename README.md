@@ -12,9 +12,9 @@ This project is using:
 
 ## Next Features!
 
-- Mobile Responsive
+- Mobile Responsive (half)
 - Working search feature
-- Emoticon working
+- Emoticon
 - More styling
 
 ### Installation

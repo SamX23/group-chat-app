@@ -1,11 +1,11 @@
 # Group Chat Web
 
-Hi, I have made a simple chat app inspired by WhatsApp web version which built using React, I'm still trying to make all features works fine.
+Hi, I have made a simple chat app inspired by WhatsApp web version and built using React JS, I'm still trying to make all features works fine.
 
-This project is using:
+Technology used in this:
 
 - React, react router and react context api
-- Material UI
+- Material UI/Icon
 - [Random profile API](https://avatars.dicebear.com/)
 - Firebase (FireStore, auth)
 - Vercel (Hosting)
@@ -20,12 +20,11 @@ This project is using:
 ### Installation
 
 Install the dependencies and start the server.
-Make sure you run the latest NPM.
 
 ```sh
 $ git clone https://github.com/SamX23/group-chat-app.git
-$ npm install
-$ npm run start
+$ yarn
+$ yarn start
 ```
 
 ### Contribution

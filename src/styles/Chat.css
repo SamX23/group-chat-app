@@ -44,7 +44,7 @@
   background-repeat: repeat;
   background-position: center;
   padding: 7px;
-  padding-top: 15px;
+  padding-top: 20px;
   overflow: auto;
 }
 
@@ -55,6 +55,7 @@
   background-color: white;
   border-radius: 10px;
   width: fit-content;
+  min-width: 100px;
   margin-bottom: 30px;
 }
 

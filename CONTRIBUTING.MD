@@ -1,6 +1,6 @@
 # Contributing Guidelines
 
-I receive any pull request from anyone! This document is containgin a contribution guidelines to this repo.
+I receive any pull request from anyone! This document contains a contribution guidelines for this repository.
 
 ## Working on issue
 
@@ -8,9 +8,9 @@ When you working on [issue]("https://github.com/SamX23/whatsapp-clone/issues") o
 
 ## Checklist
 
-Before opening pull request, make sure you have fullfill these points :
+Before opening pull request, make sure you have completed these points :
 
-- Use prettier vscode plugin to re-arrange the code.
+- Use prettier Vscode plugin to re-arrange the code.
 - Make sure you have test it locally
 
 ## Last but not the least

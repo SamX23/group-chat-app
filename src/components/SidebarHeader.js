@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useStateValue } from "../store/StateProvider";
+import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import db from "../firebase";
 import { auth } from "../firebase";
@@ -13,6 +14,8 @@ import MenuItem from "@material-ui/core/MenuItem";
 export default function SidebarHeader({}) {
   const [{ user }] = useStateValue();
   const [anchorEl, setAnchorEl] = useState(null);
+  const history = useHistory();
+
   const createChat = () => {
     const roomName = prompt("Please enter name for chat room");
     if (roomName) {
@@ -30,7 +33,10 @@ export default function SidebarHeader({}) {
   const clickLogout = () => {
     setAnchorEl(null);
     if (user) {
-      auth.signOut().then(() => localStorage.removeItem("user"));
+      auth
+        .signOut()
+        .then(() => history.push("/"))
+        .then(() => localStorage.removeItem("user"));
     }
   };
 

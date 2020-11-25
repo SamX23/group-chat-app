@@ -51,6 +51,7 @@ export default function Chat() {
       .add({
         message: input,
         name: user.displayName,
+        uid: user.uid,
         // global (server) timestamp
         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
       })
@@ -89,9 +90,10 @@ export default function Chat() {
           <p
             key={`${message.name}-${message.timestamp}`}
             className={`chat__message ${
-              message.name === user.displayName && "chat__receiver"
+              message.uid === user.uid && "chat__receiver"
             }`}
           >
+            {console.log("Message: ", message, "User: ", user)}
             <span className="chat__name">{message.name}</span>
             {message.message}
             <span className="chat__timestamp">

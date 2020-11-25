@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useStateValue } from "../store/StateProvider";
-import { useHistory } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import db from "../firebase";
 import { auth } from "../firebase";
 import firebase from "firebase";
@@ -30,8 +29,8 @@ export default function SidebarHeader({}) {
     setAnchorEl(e.currentTarget);
   };
 
-  const clickLogout = () => {
-    setAnchorEl(null);
+  const clickLogout = (event) => {
+    setAnchorEl(event.currentTarget);
     if (user) {
       auth
         .signOut()
@@ -71,6 +70,9 @@ export default function SidebarHeader({}) {
             open={Boolean(anchorEl)}
             onClose={handleClose}
           >
+            <MenuItem component={Link} to="/about">
+              About
+            </MenuItem>
             <MenuItem onClick={clickLogout}>Logout</MenuItem>
           </Menu>
         </div>

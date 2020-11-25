@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { useStateValue } from "../store/StateProvider";
 import db from "../firebase";
 import { MoreVert, SearchOutlined } from "@material-ui/icons";
 import Avatar from "@material-ui/core/Avatar";
@@ -9,6 +10,7 @@ import IconButton from "@material-ui/core/IconButton";
 
 function ChatHeader({ messages, roomName, roomId, seed }) {
   const [anchorEl, setAnchorEl] = useState(null);
+  const [{ user }] = useStateValue();
   const history = useHistory();
 
   const toggleOption = (e) => {
@@ -21,12 +23,14 @@ function ChatHeader({ messages, roomName, roomId, seed }) {
 
   const deleteChat = (id) => {
     let deleteConfirmation = window.confirm("Are you Sure ?");
-    if (deleteConfirmation) {
+    if (deleteConfirmation && user.uid === "YM29pdOLo5e19KfAcDso7BEgobr2") {
       db.collection("rooms")
         .doc(id)
         .delete()
         .then(() => history.push("/"))
         .catch((e) => console.error("Error removing document: ", e));
+    } else if (user.uid != "YM29pdOLo5e19KfAcDso7BEgobr2") {
+      window.alert("Sorry you cannot delete a room");
     }
   };
 

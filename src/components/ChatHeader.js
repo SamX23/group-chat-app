@@ -23,7 +23,7 @@ function ChatHeader({ messages, roomName, roomId, seed }) {
 
   const deleteChat = (id) => {
     let deleteConfirmation = window.confirm("Are you Sure ?");
-    if (deleteConfirmation && user.uid === "YM29pdOLo5e19KfAcDso7BEgobr2") {
+    if (deleteConfirmation && user.uid === process.env.REACT_APP_ADMIN) {
       db.collection("rooms")
         .doc(id)
         .delete()

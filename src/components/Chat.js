@@ -93,7 +93,6 @@ export default function Chat() {
               message.uid === user.uid && "chat__receiver"
             }`}
           >
-            {console.log("Message: ", message, "User: ", user)}
             <span className="chat__name">{message.name}</span>
             {message.message}
             <span className="chat__timestamp">

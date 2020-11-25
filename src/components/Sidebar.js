@@ -9,18 +9,22 @@ export default function Sidebar() {
   const [rooms, setRooms] = useState([]);
 
   useEffect(() => {
-    const susbcribe = db
-      .collection("rooms")
-      .orderBy("datecreated", "desc")
-      .onSnapshot((snapshot) => {
-        setRooms(
-          snapshot.docs.map((doc) => ({
-            id: doc.id,
-            data: doc.data(),
-          }))
-        );
-      });
-    return susbcribe;
+    try {
+      const susbcribe = db
+        .collection("rooms")
+        .orderBy("datecreated", "desc")
+        .onSnapshot((snapshot) => {
+          setRooms(
+            snapshot.docs.map((doc) => ({
+              id: doc.id,
+              data: doc.data(),
+            }))
+          );
+        });
+      return susbcribe;
+    } catch (e) {
+      console.log(e);
+    }
   }, []);
 
   return (

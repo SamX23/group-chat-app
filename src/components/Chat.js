@@ -18,7 +18,7 @@ export default function Chat() {
   // Everytime chat.js loaded, it will the roomId into name from snapshot based on roomId
   useEffect(() => {
     let isMounted = true;
-    if (roomId) {
+    if (user && roomId) {
       db.collection("rooms")
         .doc(roomId)
         .onSnapshot((snapshot) => {

@@ -12,6 +12,8 @@
 /build
 
 # firebase
+.firebase
+.firebaserc
 /src/firebase.js
 
 # misc
@@ -22,6 +24,8 @@
 .env.test.local
 .env.production.local
 .prettierignore
+.prettierrc.json
+.eslintcache
 
 npm-debug.log*
 yarn-debug.log*

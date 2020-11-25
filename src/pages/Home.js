@@ -6,6 +6,7 @@ import Loading from "../components/animations/Loading";
 
 const Chat = lazy(() => import("../components/Chat"));
 const Sidebar = lazy(() => import("../components/Sidebar"));
+const About = lazy(() => import("./About"));
 
 export default function Home() {
   const AppBody = styled(Box)({
@@ -17,20 +18,17 @@ export default function Home() {
     boxShadow: "-1px 4px 20px -6px rgba(0, 0, 0, 0.5)",
   });
   return (
-    <Suspense fallback={<Loading />}>
+    <Router>
       <AppBody>
-        <Router>
+        <Suspense fallback={<Loading title="Loading Home.." />}>
           <Sidebar />
           <Switch>
-            <Route path="/rooms/:roomId">
-              <Suspense fallback={<Loading />}>
-                <Chat />
-              </Suspense>
-            </Route>
-            <Route path="/"></Route>
+            <Suspense fallback={<Loading title="Loading Chat Body.." />}>
+              <Route path="/rooms/:roomId" component={Chat} />
+            </Suspense>
           </Switch>
-        </Router>
+        </Suspense>
       </AppBody>
-    </Suspense>
+    </Router>
   );
 }

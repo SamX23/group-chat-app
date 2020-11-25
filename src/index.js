@@ -1,17 +1,12 @@
-import { lazy, Suspense } from "react";
 import ReactDOM from "react-dom";
+import App from "./components/App";
 import "./styles/index.css";
 import { StateProvider } from "./store/StateProvider";
 import reducer, { initialState } from "./store/reducer";
-import Loading from "./components/animations/Loading";
-
-const App = lazy(() => import("./components/App"));
 
 ReactDOM.render(
   <StateProvider initialState={initialState} reducer={reducer}>
-    <Suspense fallback={<Loading />}>
-      <App />
-    </Suspense>
+    <App />
   </StateProvider>,
   document.getElementById("root")
 );

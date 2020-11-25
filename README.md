@@ -16,6 +16,7 @@ Technology used in this:
 - Working search feature
 - Emoticon
 - More styling
+- Change log Page !
 
 ### Installation
 

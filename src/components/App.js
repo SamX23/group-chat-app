@@ -1,12 +1,15 @@
 import { useEffect } from "react";
+import { lazy, Suspense } from "react";
 import { auth } from "../firebase";
 import { actionTypes } from "../store/reducer";
 import { useStateValue } from "../store/StateProvider";
+import Loading from "./animations/Loading";
 import Footer from "./Footer";
-import Home from "../pages/Home";
-import Login from "../pages/Login";
-import { Grid } from "@material-ui/core";
+import Grid from "@material-ui/core/Grid";
 import { styled } from "@material-ui/core/styles";
+
+const Home = lazy(() => import("../pages/Home"));
+const Login = lazy(() => import("../pages/Login"));
 
 export default function App() {
   const [{ user }, dispatch] = useStateValue();
@@ -31,16 +34,17 @@ export default function App() {
   });
 
   return (
-    <LoginBackground
-      container
-      direction="column"
-      alignItems="center"
-      justify="center"
-      style={{ minHeight: "100vh" }}
-    >
-      {/* <NavBarTest /> */}
-      {!user ? <Login /> : <Home />}
+    <Suspense fallback={<Loading title="Loading App.." />}>
+      <LoginBackground
+        container
+        direction="column"
+        alignItems="center"
+        justify="center"
+        style={{ minHeight: "100vh" }}
+      >
+        {!user ? <Login /> : <Home />}
+      </LoginBackground>
       <Footer />
-    </LoginBackground>
+    </Suspense>
   );
 }

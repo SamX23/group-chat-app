@@ -1,10 +1,12 @@
-import Container from "@material-ui/core/Container";
+import Grid from "@material-ui/core/Grid";
+import Box from "@material-ui/core/Box";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
-export default function Loading() {
+export default function Loading({ title }) {
   return (
-    <Container maxWidth="sm">
+    <Grid>
       <CircularProgress />
-    </Container>
+      <Box>{title || "Loading..."}</Box>
+    </Grid>
   );
 }

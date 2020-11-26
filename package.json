@@ -17,6 +17,7 @@
     "react-google-button": "^0.7.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.0",
+    "react-text-format": "^2.0.28",
     "react-transition-group": "^4.4.1"
   },
   "scripts": {

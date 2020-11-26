@@ -23,14 +23,12 @@ function ChatHeader({ messages, roomName, roomId, seed }) {
 
   const deleteChat = (id) => {
     let deleteConfirmation = window.confirm("Are you Sure ?");
-    if (deleteConfirmation && user.uid === process.env.REACT_APP_ADMIN) {
+    if (deleteConfirmation) {
       db.collection("rooms")
         .doc(id)
         .delete()
         .then(() => history.push("/"))
         .catch((e) => console.error("Error removing document: ", e));
-    } else if (user.uid != "YM29pdOLo5e19KfAcDso7BEgobr2") {
-      window.alert("Sorry you cannot delete a room");
     }
   };
 
@@ -52,14 +50,16 @@ function ChatHeader({ messages, roomName, roomId, seed }) {
         <IconButton>
           <SearchOutlined />
         </IconButton>
-        <IconButton
-          aria-controls="option-menu"
-          aria-haspopup="true"
-          className="sidebar__option"
-          onClick={toggleOption}
-        >
-          <MoreVert />
-        </IconButton>
+        {user.uid === process.env.REACT_APP_ADMIN && (
+          <IconButton
+            aria-controls="option-menu"
+            aria-haspopup="true"
+            className="sidebar__option"
+            onClick={toggleOption}
+          >
+            <MoreVert />
+          </IconButton>
+        )}
         <Menu
           id="option-menu"
           anchorEl={anchorEl}

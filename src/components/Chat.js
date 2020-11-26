@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useStateValue } from "../store/StateProvider";
 import db from "../firebase";
 import firebase from "firebase";
+import MessageFormatter from "./MessageFormatter";
 import { InsertEmoticon } from "@material-ui/icons";
 import IconButton from "@material-ui/core/IconButton";
 import ChatHeader from "./ChatHeader";
@@ -86,21 +87,23 @@ export default function Chat() {
         roomId={roomId}
       />
       <div className="chat__body">
-        {messages.map((message) => (
-          <p
-            key={`${message.name}-${message.timestamp}`}
-            className={`chat__message ${
-              message.uid === user.uid && "chat__receiver"
-            }`}
-          >
-            <span className="chat__name">{message.name}</span>
-            {message.message}
-            <span className="chat__timestamp">
-              {/* Simplest method handling timestamp on firebase */}
-              {showDate(message)}
-            </span>
-          </p>
-        ))}
+        <MessageFormatter>
+          {messages.map((message) => (
+            <p
+              key={`${message.name}-${message.timestamp}`}
+              className={`chat__message ${
+                message.uid === user.uid && "chat__receiver"
+              }`}
+            >
+              <span className="chat__name">{message.name}</span>
+              {message.message}
+              <span className="chat__timestamp">
+                {/* Simplest method handling timestamp on firebase */}
+                {showDate(message)}
+              </span>
+            </p>
+          ))}
+        </MessageFormatter>
       </div>
       <div className="chat__input">
         <IconButton>

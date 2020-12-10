@@ -8,6 +8,7 @@ Technology used in this:
 - Material UI/Icon
 - [Random profile API](https://avatars.dicebear.com/)
 - Firebase (FireStore, auth)
+- Moment JS
 - Vercel (Hosting)
 
 ## Next Features!

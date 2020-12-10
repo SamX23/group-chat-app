@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useStateValue } from "../store/StateProvider";
+import moment from "moment";
 import db from "../firebase";
 import firebase from "firebase";
 import MessageFormatter from "./MessageFormatter";
@@ -68,14 +69,9 @@ export default function Chat() {
     setInput("");
   };
 
-  const today = new Date().toLocaleString();
   const showDate = (message) => {
-    const date = new Date(message.timestamp?.toDate()).toLocaleString();
-    if (date === today) {
-      return "recently";
-    } else {
-      return date;
-    }
+    let date = message.timestamp?.toDate();
+    return moment(date).calendar();
   };
 
   return (

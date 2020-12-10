@@ -70,8 +70,12 @@ export default function Chat() {
   };
 
   const showDate = (message) => {
-    let date = message.timestamp?.toDate();
-    return moment(date).calendar();
+    let source = message.timestamp?.toDate();
+    if (moment(source).fromNow() > moment().calendar()) {
+      return moment(source).fromNow();
+    } else {
+      return moment(source).calendar();
+    }
   };
 
   return (

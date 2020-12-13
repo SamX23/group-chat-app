@@ -5,7 +5,7 @@ import { styled } from "@material-ui/core/styles";
 import Loading from "../components/animations/Loading";
 
 const Chat = lazy(() => import("../components/chat/Chat"));
-const Sidebar = lazy(() => import("../components/Sidebar"));
+const Sidebar = lazy(() => import("../components/sidebar/Sidebar"));
 
 export default function App() {
   const AppBody = styled(Box)({

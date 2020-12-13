@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import { Link } from "react-router-dom";
-import db from "../firebase";
+import db from "../../firebase";
 
 export default function SidebarChat({ id, name }) {
   const [seed, setSeed] = useState("");

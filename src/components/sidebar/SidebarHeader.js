@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { useStateValue } from "../store/StateProvider";
+import { useStateValue } from "../../store/StateProvider";
 import { useHistory, Link } from "react-router-dom";
-import db from "../firebase";
-import { auth } from "../firebase";
+import db from "../../firebase";
+import { auth } from "../../firebase";
 import firebase from "firebase";
 import { Chat as ChatIcon, MoreVert, SearchOutlined } from "@material-ui/icons";
 import IconButton from "@material-ui/core/IconButton";

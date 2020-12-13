@@ -1,6 +1,6 @@
 import { lazy, Suspense, useEffect, useState } from "react";
-import db from "../firebase";
-import Loading from "./animations/Loading";
+import db from "../../firebase";
+import Loading from "../animations/Loading";
 
 const SidebarChat = lazy(() => import("./SidebarChat"));
 const SidebarHeader = lazy(() => import("./SidebarHeader"));

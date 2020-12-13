@@ -1,11 +1,49 @@
 import { useState } from "react";
 import firebase from "firebase";
+import {
+  createStyles,
+  styled,
+  makeStyles,
+  Theme,
+} from "@material-ui/core/styles";
 import { InsertEmoticon } from "@material-ui/icons";
-import IconButton from "@material-ui/core/IconButton";
+import { IconButton, Input, FormControl, Button, Box } from "@material-ui/core";
+
+const useStyles = makeStyles(() =>
+  createStyles({
+    root: {
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
+      height: "62px",
+
+      "& > .MuiSvgIcon-root": {
+        margin: "10px",
+        color: "gray",
+      },
+    },
+
+    form: {
+      flex: 1,
+      display: "flex",
+      paddingRight: "20px",
+
+      "& .MuiInput-root": {
+        flex: 1,
+        border: "none",
+        padding: "10px",
+      },
+
+      "& > button": {
+        display: "none",
+      },
+    },
+  })
+);
 
 const ChatInput = ({ db, roomId, user }) => {
+  const classes = useStyles();
   const [input, setInput] = useState("");
-
   const sendMessage = (e) => {
     e.preventDefault();
     db.collection("rooms")
@@ -31,23 +69,24 @@ const ChatInput = ({ db, roomId, user }) => {
   };
 
   return (
-    <div className="chat__input">
+    <Box className={classes.root}>
       <IconButton>
         <InsertEmoticon />
       </IconButton>
       {/* <Picker onSelect={this.addEmoji} /> */}
-      <form>
-        <input
+      <form className={classes.form}>
+        <Input
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="Type a message"
+          inputProps={{ "aria-label": "description" }}
           type="text"
         />
-        <button onClick={sendMessage} type="submit">
+        <Button onClick={sendMessage} type="submit">
           Send a message
-        </button>
+        </Button>
       </form>
-    </div>
+    </Box>
   );
 };
 

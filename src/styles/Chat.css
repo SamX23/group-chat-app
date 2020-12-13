@@ -75,34 +75,3 @@
   margin-left: 15px;
   font-size: x-small;
 }
-
-.chat__input {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 62px;
-  border-top: 1px solid lightgray;
-}
-
-.chat__input > form {
-  flex: 1;
-  display: flex;
-  padding-right: 20px;
-}
-
-.chat__input > form > input {
-  flex: 1;
-  border-radius: 30px;
-  border: none;
-  padding: 10px;
-}
-
-/* Tips to button function but not showing */
-.chat__input > form > button {
-  display: none;
-}
-
-.chat__input > .MuiSvgIcon-root {
-  margin: 10px;
-  color: gray;
-}

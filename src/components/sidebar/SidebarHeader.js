@@ -48,7 +48,7 @@ export default function SidebarHeader({}) {
       <div className="sidebar__headerMenu">
         <div className="sidebar__headerLeft">
           <Link to="/">
-            <Avatar src={user?.photoURL} />
+            <Avatar src={user?.photoURL} alt="Group Avatar" />
           </Link>
         </div>
         <div className="sidebar__headerRight">

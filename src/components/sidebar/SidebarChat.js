@@ -28,7 +28,10 @@ export default function SidebarChat({ id, name }) {
     <div className="sidebarChat">
       <Link to={`/rooms/${id}`}>
         <div className="sidebarChat__container">
-          <Avatar src={`https://avatars.dicebear.com/api/human/${seed}.svg`} />
+          <Avatar
+            src={`https://avatars.dicebear.com/api/human/${seed}.svg`}
+            alt="Group Avatar"
+          />
           <div className="sidebarChat__info">
             <h2>{name}</h2>
             <p>{messages[0]?.message}</p>

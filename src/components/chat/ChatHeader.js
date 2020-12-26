@@ -48,7 +48,7 @@ function ChatHeader({ db, user, messages, roomName, roomId, seed, showDate }) {
         {user.uid === process.env.REACT_APP_ADMIN && (
           <IconButton
             aria-label="option menu"
-            aria-controls="option-menu"
+            aria-controls="chat-option-menu"
             aria-haspopup="true"
             className="sidebar__option"
             onClick={toggleOption}
@@ -57,7 +57,7 @@ function ChatHeader({ db, user, messages, roomName, roomId, seed, showDate }) {
           </IconButton>
         )}
         <Menu
-          id="option-menu"
+          id="chat-option-menu"
           anchorEl={anchorEl}
           keepMounted
           open={Boolean(anchorEl)}

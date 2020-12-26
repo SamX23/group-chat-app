@@ -70,7 +70,7 @@ const ChatInput = ({ db, roomId, user }) => {
 
   return (
     <Box className={classes.root}>
-      <IconButton>
+      <IconButton aria-label="insert emoticon">
         <InsertEmoticon />
       </IconButton>
       {/* <Picker onSelect={this.addEmoji} /> */}

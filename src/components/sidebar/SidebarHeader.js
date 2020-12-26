@@ -53,10 +53,11 @@ export default function SidebarHeader({}) {
           </Link>
         </div>
         <div className="sidebar__headerRight">
-          <IconButton onClick={createChat}>
+          <IconButton aria-label="new chat" onClick={createChat}>
             <ChatIcon />
           </IconButton>
           <IconButton
+            aria-label="option menu"
             aria-controls="option-menu"
             aria-haspopup="true"
             className="sidebar__option"
@@ -82,7 +83,7 @@ export default function SidebarHeader({}) {
         <div className="sidebar__searchContainer">
           <SearchOutlined />
           <Input
-            inputProps={{ "aria-label": "description" }}
+            inputProps={{ "aria-label": "search bar" }}
             placeholder="Search or start new chat"
             type="text"
           />

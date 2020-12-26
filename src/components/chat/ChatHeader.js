@@ -42,11 +42,12 @@ function ChatHeader({ db, user, messages, roomName, roomId, seed, showDate }) {
         {messages.length > 0 && <p>Last update {showDate(lastSeen)}</p>}
       </div>
       <div className="chat__headerMenu">
-        <IconButton>
+        <IconButton aria-label="search message">
           <SearchOutlined />
         </IconButton>
         {user.uid === process.env.REACT_APP_ADMIN && (
           <IconButton
+            aria-label="option menu"
             aria-controls="option-menu"
             aria-haspopup="true"
             className="sidebar__option"

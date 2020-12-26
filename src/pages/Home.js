@@ -24,13 +24,12 @@ export default function Home() {
     };
   }, [dispatch]);
 
-  const LoginBackground = styled(Grid)({
-    backgroundImage:
-      "url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png')",
+  const AppBackground = styled(Grid)({
+    backgroundColor: "#313131",
   });
 
   return (
-    <LoginBackground
+    <AppBackground
       container
       direction="column"
       alignItems="center"
@@ -38,6 +37,6 @@ export default function Home() {
       style={{ minHeight: "100vh" }}
     >
       {!user ? <Login /> : <App />}
-    </LoginBackground>
+    </AppBackground>
   );
 }

@@ -9,6 +9,7 @@ import IconButton from "@material-ui/core/IconButton";
 import Avatar from "@material-ui/core/Avatar";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
+import Input from "@material-ui/core/Input";
 
 export default function SidebarHeader({}) {
   const [{ user }] = useStateValue();
@@ -80,7 +81,11 @@ export default function SidebarHeader({}) {
       <div className="sidebar__search">
         <div className="sidebar__searchContainer">
           <SearchOutlined />
-          <input placeholder="Search or start new chat" type="text" />
+          <Input
+            inputProps={{ "aria-label": "description" }}
+            placeholder="Search or start new chat"
+            type="text"
+          />
         </div>
       </div>
     </div>

@@ -13,7 +13,7 @@ export default function Footer() {
     padding: "5px",
     backgroundColor: "#c1beba",
     "& a": {
-      color: "rgb(253, 69, 69)",
+      color: "#0400ff",
       textDecoration: "none",
     },
   });

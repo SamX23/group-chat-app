@@ -3,7 +3,7 @@ import { auth } from "../firebase";
 import { actionTypes } from "../store/reducer";
 import { useStateValue } from "../store/StateProvider";
 import App from "./App";
-import Login from "./Login";
+import Login from "./Login/Login";
 import Grid from "@material-ui/core/Grid";
 import { styled } from "@material-ui/core/styles";
 

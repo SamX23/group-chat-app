@@ -1,13 +1,9 @@
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { styled } from "@material-ui/core/styles";
-import { LineRGB } from "../../components/animations/animation";
 import GoogleButton from "react-google-button";
 
 // Optimized soon
-export const useStyles = LineRGB;
-useStyles();
-
 export const LoginContainer = styled(Grid)({
   padding: "50px",
   margin: "20px",

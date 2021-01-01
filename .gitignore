@@ -16,6 +16,7 @@
 .firebaserc
 
 # misc
+.eslintcache
 .DS_Store
 .env
 .env.local

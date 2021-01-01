@@ -2,6 +2,10 @@
   "name": "Group Chat App",
   "short_name": "Group Chat",
   "description": "A simple group chat app",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#313131",
+  "theme_color": "#ededed",
   "icons": [
     {
       "src": "icon.png",
@@ -14,9 +18,5 @@
       "type": "image/png",
       "purpose": "any maskable"
     }
-  ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  ]
 }

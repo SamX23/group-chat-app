@@ -2,9 +2,10 @@
 
 Hi, I have made a simple chat app inspired by WhatsApp web version and built using React JS, I'm still trying to make all features works fine.
 
-Technology used in this:
+Technology :
 
 - React, react router and react context api
+- PWA
 - Material UI/Icon
 - [Random profile API](https://avatars.dicebear.com/)
 - Firebase (FireStore, auth)

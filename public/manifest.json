@@ -8,13 +8,13 @@
   "theme_color": "#ededed",
   "icons": [
     {
-      "src": "icon.png",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "src": "splash_icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
     },
     {
       "src": "maskable_icon.png",
-      "sizes": "128x128",
+      "sizes": "134x134",
       "type": "image/png",
       "purpose": "any maskable"
     }

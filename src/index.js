@@ -6,7 +6,6 @@ import { theme } from "./styles/GlobalStyles";
 import { ThemeProvider } from "@material-ui/core/styles";
 import { StateProvider } from "./store/StateProvider";
 import reducer, { initialState } from "./store/reducer";
-import * as serviceWorker from "./service-worker";
 
 ReactDOM.render(
   <StateProvider initialState={initialState} reducer={reducer}>
@@ -17,5 +16,3 @@ ReactDOM.render(
   </StateProvider>,
   document.getElementById("root")
 );
-
-serviceWorker.register();

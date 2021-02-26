@@ -8,7 +8,6 @@ export default function SidebarChat({ id, name }) {
   const [messages, setMessages] = useState("");
 
   useEffect(() => {
-    // sort latest message shown in sidebarchat
     if (id) {
       db.collection("rooms")
         .doc(id)

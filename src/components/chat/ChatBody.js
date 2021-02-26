@@ -1,4 +1,3 @@
-import moment from "moment";
 import MessageFormatter from "../MessageFormatter";
 
 const ChatBody = ({ messages, showDate, user }) => {

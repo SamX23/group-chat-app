@@ -3,7 +3,6 @@ import Typography from "@material-ui/core/Typography";
 import { styled } from "@material-ui/core/styles";
 import GoogleButton from "react-google-button";
 
-// Optimized soon
 export const LoginContainer = styled(Grid)({
   padding: "50px",
   margin: "20px",

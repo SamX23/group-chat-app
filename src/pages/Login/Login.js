@@ -4,7 +4,6 @@ import { useStateValue } from "../../store/StateProvider";
 import { LoginButton, LoginContainer, LoginText } from "./style";
 
 export default function Login() {
-  // Optimized soon
   const [{}, dispatch] = useStateValue();
   const signIn = () => {
     auth

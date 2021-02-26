@@ -1,13 +1,8 @@
 import { useState } from "react";
 import firebase from "firebase";
-import {
-  createStyles,
-  styled,
-  makeStyles,
-  Theme,
-} from "@material-ui/core/styles";
+import { createStyles, makeStyles } from "@material-ui/core/styles";
 import { InsertEmoticon } from "@material-ui/icons";
-import { IconButton, Input, FormControl, Button, Box } from "@material-ui/core";
+import { IconButton, Input, Button, Box } from "@material-ui/core";
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -53,7 +48,6 @@ const ChatInput = ({ db, roomId, user }) => {
         message: input,
         name: user.displayName,
         uid: user.uid,
-        // global (server) timestamp
         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
       })
       .catch((e) => console.error("Error writing document: ", e));
@@ -73,7 +67,6 @@ const ChatInput = ({ db, roomId, user }) => {
       <IconButton aria-label="insert emoticon">
         <InsertEmoticon />
       </IconButton>
-      {/* <Picker onSelect={this.addEmoji} /> */}
       <form className={classes.form}>
         <Input
           value={input}

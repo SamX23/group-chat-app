@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import moment from "moment";
-import firebase from "firebase";
 import db from "../../firebase";
 import { useStateValue } from "../../store/StateProvider";
 import ChatHeader from "./ChatHeader";
@@ -21,7 +20,10 @@ export default function Chat() {
       db.collection("rooms")
         .doc(roomId)
         .onSnapshot((snapshot) => {
-          if (isMounted) snapshot.data() && setRoomName(snapshot.data().name);
+          if (isMounted) {
+            return snapshot.data() && setRoomName(snapshot.data().name);
+          }
+          return null;
         });
 
       db.collection("rooms")

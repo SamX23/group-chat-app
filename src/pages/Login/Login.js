@@ -4,6 +4,7 @@ import { useStateValue } from "../../store/StateProvider";
 import { LoginButton, LoginContainer, LoginText } from "./style";
 
 export default function Login() {
+  // eslint-disable-next-line no-empty-pattern
   const [{}, dispatch] = useStateValue();
   const signIn = () => {
     auth

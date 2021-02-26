@@ -20,7 +20,7 @@ function ChatHeader({ db, user, messages, roomName, roomId, seed, showDate }) {
   };
 
   const deleteChat = (id) => {
-    let deleteConfirmation = window.confirm("Are you Sure ?");
+    const deleteConfirmation = window.confirm("Are you Sure ?");
     if (deleteConfirmation) {
       db.collection("rooms")
         .doc(id)

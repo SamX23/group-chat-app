@@ -42,7 +42,7 @@ export default function Chat() {
   }, []);
 
   const showDate = (message) => {
-    let source = message.timestamp?.toDate();
+    const source = message.timestamp?.toDate();
     if (moment(source).fromNow() > moment().calendar()) {
       return moment(source).fromNow();
     } else {

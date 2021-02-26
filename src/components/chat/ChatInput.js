@@ -39,8 +39,8 @@ const useStyles = makeStyles(() =>
 const ChatInput = ({ db, roomId, user }) => {
   const classes = useStyles();
   const [input, setInput] = useState("");
-  const sendMessage = (e) => {
-    e.preventDefault();
+  const sendMessage = (event) => {
+    event.preventDefault();
     db.collection("rooms")
       .doc(roomId)
       .collection("messages")
@@ -50,14 +50,14 @@ const ChatInput = ({ db, roomId, user }) => {
         uid: user.uid,
         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
       })
-      .catch((e) => console.error("Error writing document: ", e));
+      .catch((err) => console.error("Error writing document: ", err));
 
     db.collection("rooms")
       .doc(roomId)
       .update({
         datecreated: firebase.firestore.FieldValue.serverTimestamp(),
       })
-      .catch((e) => console.error("Error writing document: ", e));
+      .catch((err) => console.error("Error writing document: ", err));
 
     setInput("");
   };
@@ -70,7 +70,7 @@ const ChatInput = ({ db, roomId, user }) => {
       <form className={classes.form}>
         <Input
           value={input}
-          onChange={(e) => setInput(e.target.value)}
+          onChange={(event) => setInput(event.target.value)}
           placeholder="Type a message"
           inputProps={{ "aria-label": "description" }}
           type="text"

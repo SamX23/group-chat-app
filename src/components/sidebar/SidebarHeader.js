@@ -1,8 +1,5 @@
 import { useState } from "react";
-import { useStateValue } from "../../store/StateProvider";
 import { useHistory, Link } from "react-router-dom";
-import db from "../../firebase";
-import { auth } from "../../firebase";
 import firebase from "firebase";
 import { Chat as ChatIcon, MoreVert, SearchOutlined } from "@material-ui/icons";
 import IconButton from "@material-ui/core/IconButton";
@@ -10,6 +7,8 @@ import Avatar from "@material-ui/core/Avatar";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import Input from "@material-ui/core/Input";
+import db, { auth } from "../../firebase";
+import { useStateValue } from "../../store/StateProvider";
 
 export default function SidebarHeader({}) {
   const [{ user }] = useStateValue();

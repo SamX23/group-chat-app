@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { useStateValue } from "../../store/StateProvider";
 import moment from "moment";
-import db from "../../firebase";
 import firebase from "firebase";
+import db from "../../firebase";
+import { useStateValue } from "../../store/StateProvider";
 import ChatHeader from "./ChatHeader";
 import ChatBody from "./ChatBody";
 import ChatInput from "./ChatInput";
@@ -15,7 +15,6 @@ export default function Chat() {
   const [{ user }] = useStateValue();
   const { roomId } = useParams([]);
 
-  // Everytime chat.js loaded, it will the roomId into name from snapshot based on roomId
   useEffect(() => {
     let isMounted = true;
     if (user && roomId) {

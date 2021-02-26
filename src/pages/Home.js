@@ -19,9 +19,7 @@ export default function Home() {
       });
     });
 
-    return function () {
-      listener();
-    };
+    return () => listener();
   }, [dispatch]);
 
   const AppBackground = styled(Grid)({

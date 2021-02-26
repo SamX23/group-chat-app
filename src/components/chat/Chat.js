@@ -45,9 +45,8 @@ export default function Chat() {
     const source = message.timestamp?.toDate();
     if (moment(source).fromNow() > moment().calendar()) {
       return moment(source).fromNow();
-    } else {
-      return moment(source).calendar();
     }
+    return moment(source).calendar();
   };
 
   return (

@@ -10,7 +10,7 @@ import Input from "@material-ui/core/Input";
 import db, { auth } from "../../firebase";
 import { useStateValue } from "../../store/StateProvider";
 
-export default function SidebarHeader({}) {
+export default function SidebarHeader() {
   const [{ user }] = useStateValue();
   const [anchorEl, setAnchorEl] = useState(null);
   const history = useHistory();

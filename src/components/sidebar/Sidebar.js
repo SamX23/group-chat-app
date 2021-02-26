@@ -23,7 +23,7 @@ export default function Sidebar() {
         });
       return susbcribe;
     } catch (err) {
-      console.log(err);
+      return console.log(err);
     }
   }, []);
 

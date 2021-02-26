@@ -4,7 +4,7 @@ import Link from "@material-ui/core/Link";
 import { styled } from "@material-ui/core/styles";
 
 export default function Footer() {
-  const Footer = styled(Box)({
+  const FooterBar = styled(Box)({
     position: "fixed",
     left: 0,
     bottom: 0,
@@ -19,7 +19,7 @@ export default function Footer() {
   });
 
   return (
-    <Footer>
+    <FooterBar>
       <Typography variant="body1">
         Made with{" "}
         <span role="img" aria-label="love">
@@ -29,6 +29,6 @@ export default function Footer() {
         <Link href="https://samx23.github.io"> Sami Kalammallah</Link> ©{" "}
         {new Date().getFullYear()}
       </Typography>
-    </Footer>
+    </FooterBar>
   );
 }

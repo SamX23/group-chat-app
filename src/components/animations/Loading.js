@@ -1,8 +1,9 @@
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import PropTypes from "prop-types";
 
-export default function Loading({ title }) {
+function Loading({ title }) {
   return (
     <Grid>
       <CircularProgress />
@@ -10,3 +11,13 @@ export default function Loading({ title }) {
     </Grid>
   );
 }
+
+Loading.defaultProps = {
+  title: "Component",
+};
+
+Loading.propTypes = {
+  title: PropTypes.string,
+};
+
+export default Loading;

@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import db from "../../firebase";
 
-export default function SidebarChat({ id, name }) {
+const SidebarChat = ({ id, name }) => {
   const [seed, setSeed] = useState("");
   const [messages, setMessages] = useState("");
 
@@ -39,4 +40,11 @@ export default function SidebarChat({ id, name }) {
       </Link>
     </div>
   );
-}
+};
+
+SidebarChat.propTypes = {
+  id: PropTypes.string,
+  name: PropTypes.string,
+};
+
+export default SidebarChat;

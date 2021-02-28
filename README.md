@@ -19,7 +19,6 @@ Technology :
 - Emoticon
 - More styling
 - Change log Page !
-- About Page (working on forwardRef)
 <!-- https://material-ui.com/guides/composition/#link -->
 
 ### Installation

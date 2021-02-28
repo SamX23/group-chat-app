@@ -5,9 +5,7 @@ const self = this;
 self.addEventListener("install", (event) => {
   self.skipWaiting();
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(urlsToCache);
-    })
+    caches.open(CACHE_NAME).then((cache) => cache.addAll(urlsToCache))
   );
 });
 
@@ -16,9 +14,8 @@ self.addEventListener("fetch", (event) => {
     caches.match(event.request).then((response) => {
       if (response) {
         return response;
-      } else {
-        return fetch(event.request).catch(() => caches.match("offline.html"));
       }
+      return fetch(event.request).catch(() => caches.match("offline.html"));
     })
   );
 });
@@ -34,6 +31,7 @@ self.addEventListener("activate", (event) => {
           if (!cacheWhiteList.includes(cacheName)) {
             return caches.delete(cacheName);
           }
+          return null;
         })
       )
     )

@@ -21,7 +21,7 @@ const ChatBody = ({ messages, showDate, user }) => (
 );
 
 ChatBody.propTypes = {
-  messages: PropTypes.objectOf(PropTypes.array),
+  messages: PropTypes.instanceOf(Array),
   showDate: PropTypes.func,
   user: PropTypes.objectOf(PropTypes.any),
 };

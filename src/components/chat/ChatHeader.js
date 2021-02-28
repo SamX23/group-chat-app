@@ -5,6 +5,7 @@ import Avatar from "@material-ui/core/Avatar";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import IconButton from "@material-ui/core/IconButton";
+import PropTypes from "prop-types";
 
 function ChatHeader({ db, user, messages, roomName, roomId, seed, showDate }) {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -68,5 +69,15 @@ function ChatHeader({ db, user, messages, roomName, roomId, seed, showDate }) {
     </div>
   );
 }
+
+ChatHeader.propTypes = {
+  db: PropTypes.objectOf(PropTypes.any),
+  user: PropTypes.objectOf(PropTypes.any),
+  messages: PropTypes.instanceOf(Array),
+  roomName: PropTypes.string,
+  roomId: PropTypes.string,
+  seed: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  showDate: PropTypes.func,
+};
 
 export default ChatHeader;

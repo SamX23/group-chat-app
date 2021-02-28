@@ -1,8 +1,9 @@
 import { useState } from "react";
-import firebase from "firebase";
+import { firestore } from "firebase";
 import { createStyles, makeStyles } from "@material-ui/core/styles";
 import { InsertEmoticon } from "@material-ui/icons";
 import { IconButton, Input, Button, Box } from "@material-ui/core";
+import PropTypes from "prop-types";
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -48,14 +49,14 @@ const ChatInput = ({ db, roomId, user }) => {
         message: input,
         name: user.displayName,
         uid: user.uid,
-        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+        timestamp: firestore.FieldValue.serverTimestamp(),
       })
       .catch((err) => console.error("Error writing document: ", err));
 
     db.collection("rooms")
       .doc(roomId)
       .update({
-        datecreated: firebase.firestore.FieldValue.serverTimestamp(),
+        datecreated: firestore.FieldValue.serverTimestamp(),
       })
       .catch((err) => console.error("Error writing document: ", err));
 
@@ -81,6 +82,12 @@ const ChatInput = ({ db, roomId, user }) => {
       </form>
     </Box>
   );
+};
+
+ChatInput.propTypes = {
+  db: PropTypes.objectOf(PropTypes.any),
+  roomId: PropTypes.string,
+  user: PropTypes.objectOf(PropTypes.any),
 };
 
 export default ChatInput;

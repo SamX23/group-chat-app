@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useHistory, Link } from "react-router-dom";
-import firebase from "firebase";
+import { firestore } from "firebase";
 import { Chat as ChatIcon, MoreVert, SearchOutlined } from "@material-ui/icons";
 import IconButton from "@material-ui/core/IconButton";
 import Avatar from "@material-ui/core/Avatar";
@@ -20,7 +20,7 @@ export default function SidebarHeader() {
     if (roomName) {
       db.collection("rooms").add({
         name: roomName,
-        datecreated: firebase.firestore.FieldValue.serverTimestamp(),
+        datecreated: firestore.FieldValue.serverTimestamp(),
       });
     }
   };
@@ -71,9 +71,6 @@ export default function SidebarHeader() {
             open={Boolean(anchorEl)}
             onClose={handleClose}
           >
-            <MenuItem component={Link} to="/about">
-              About
-            </MenuItem>
             <MenuItem onClick={clickLogout}>Logout</MenuItem>
           </Menu>
         </div>

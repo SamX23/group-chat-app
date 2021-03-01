@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 export const initialState = {
   user: JSON.parse(localStorage.getItem("user")),
 };
@@ -16,6 +18,11 @@ const reducer = (state, action) => {
     default:
       return state;
   }
+};
+
+reducer.propTypes = {
+  state: PropTypes.node,
+  action: PropTypes.node,
 };
 
 export default reducer;

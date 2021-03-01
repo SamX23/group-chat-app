@@ -26,10 +26,12 @@
 .chat__headerInfo > h3 {
   margin-bottom: 3px;
   font-weight: 500;
+  margin: unset;
 }
 
 .chat__headerInfo > p {
   color: grey;
+  margin: unset;
 }
 
 .chat__headerMenu {
@@ -49,14 +51,17 @@
 }
 
 .chat__message {
+  box-sizing: unset;
   position: relative;
   font-size: 16px;
   padding: 10px;
   background-color: white;
   border-radius: 10px;
   width: fit-content;
-  min-width: 100px;
   margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  align-content: space-evenly;
 }
 
 .chat__receiver {
@@ -66,6 +71,7 @@
 
 .chat__name {
   position: absolute;
+  width: max-content;
   top: -15px;
   font-weight: 800;
   font-size: x-small;

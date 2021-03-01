@@ -3,30 +3,37 @@
   max-height: 100px;
 }
 
-.sidebarChat__container {
-  display: flex;
-  padding: 10px;
-  cursor: pointer;
-  border-bottom: 1px solid #c9c9c9;
-}
-
 .sidebarChat > a {
   flex: 1;
   text-decoration: none !important;
   color: black;
 }
 
+.sidebarChat__container {
+  display: flex;
+  padding: 10px;
+  cursor: pointer;
+  border-bottom: 1px solid #c9c9c9;
+  align-items: center;
+  max-height: 5em;
+}
+
 .sidebarChat__container:hover {
   background-color: #ebebeb;
+}
+
+.sidebarChat__info {
+  margin-left: 15px;
 }
 
 .sidebarChat__info > h2 {
   font-size: 16px;
   margin-bottom: 8px;
+  margin: unset;
 }
 
-.sidebarChat__info {
-  margin-left: 15px;
+.sidebarChat__info > p {
+  margin: unset;
 }
 
 .sidebarChat__option {

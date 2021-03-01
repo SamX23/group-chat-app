@@ -6,7 +6,7 @@ import IconButton from "@material-ui/core/IconButton";
 import Avatar from "@material-ui/core/Avatar";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
-import Input from "@material-ui/core/Input";
+import InputBase from "@material-ui/core/InputBase";
 import db, { auth } from "../../firebase";
 import { useStateValue } from "../../store/StateProvider";
 
@@ -78,7 +78,7 @@ export default function SidebarHeader() {
       <div className="sidebar__search">
         <div className="sidebar__searchContainer">
           <SearchOutlined />
-          <Input
+          <InputBase
             inputProps={{ "aria-label": "search bar" }}
             placeholder="Search or start new chat"
             type="text"

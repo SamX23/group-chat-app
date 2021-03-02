@@ -8,10 +8,16 @@ const ChatBody = ({ messages, showDate, user }) => (
         <p
           key={`${message.name}-${message.timestamp}`}
           className={`chat__message ${
-            message.uid === user.uid && "chat__receiver"
+            message.uid === user.uid && "chat__sender"
           }`}
         >
-          <span className="chat__name">{message.name}</span>
+          <span
+            className={`chat__name ${
+              message.uid === user.uid && "chat__nameSender"
+            }`}
+          >
+            {message.name}
+          </span>
           {message.message}
           <span className="chat__timestamp">{showDate(message)}</span>
         </p>

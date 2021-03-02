@@ -6,7 +6,7 @@
 
 .chat__header {
   display: flex;
-  min-height: 50px;
+  min-height: 70px;
   padding: 15px 5px;
   justify-content: space-between;
   align-items: center;
@@ -64,17 +64,22 @@
   align-content: space-evenly;
 }
 
-.chat__receiver {
-  margin-left: auto;
-  background-color: #dcf8c6;
-}
-
 .chat__name {
   position: absolute;
   width: max-content;
   top: -15px;
   font-weight: 800;
   font-size: x-small;
+}
+
+.chat__nameSender {
+  right: 0;
+  margin-right: 5px;
+}
+
+.chat__sender {
+  margin-left: auto;
+  background-color: #dcf8c6;
 }
 
 .chat__timestamp {

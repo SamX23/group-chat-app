@@ -27,6 +27,9 @@
   margin-bottom: 3px;
   font-weight: 500;
   margin: unset;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 1.5em;
 }
 
 .chat__headerInfo > p {
@@ -58,6 +61,7 @@
   background-color: white;
   border-radius: 10px;
   width: fit-content;
+  max-width: 30em;
   margin-bottom: 30px;
   display: flex;
   align-items: center;

@@ -1,10 +1,11 @@
 # Group Chat Web
 
-Hi, I have made a simple chat app inspired by WhatsApp web version and built using React JS, I'm still trying to make all features works fine.
+A group chat app inspired from WhatsApp web, built using React and firebase.
+Still trying to make all features works fine.
 
 Technology :
 
-- React, react router and react context api
+- React
 - PWA
 - Material UI/Icon
 - [Random profile API](https://avatars.dicebear.com/)

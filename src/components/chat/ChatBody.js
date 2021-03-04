@@ -19,18 +19,24 @@ const ChatBody = ({ messages, showDate, user }) => {
           <p
             key={`${message.name}-${message.timestamp}`}
             className={`chat__message ${
-              message.uid === user.uid && "chat__sender"
+              message.uid === user.uid && "chat__users"
             }`}
           >
             <span
-              className={`chat__name ${
-                message.uid === user.uid && "chat__nameSender"
+              className={`chat__name chat__property ${
+                message.uid === user.uid && "chat__senderProperty"
               }`}
             >
               {message.name}
             </span>
             {message.message}
-            <span className="chat__timestamp">{showDate(message)}</span>
+            <span
+              className={`chat__timestamp chat__property ${
+                message.uid === user.uid && "chat__senderProperty"
+              }`}
+            >
+              {showDate(message)}
+            </span>
           </p>
         ))}
       </MessageFormatter>

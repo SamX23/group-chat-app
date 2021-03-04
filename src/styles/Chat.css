@@ -49,7 +49,7 @@
   background-repeat: repeat;
   background-position: center;
   padding: 7px;
-  padding-top: 20px;
+  padding-top: 1em;
   overflow: auto;
 }
 
@@ -57,36 +57,38 @@
   box-sizing: unset;
   position: relative;
   font-size: 16px;
-  padding: 10px;
+  padding: 0.5em;
   background-color: white;
   border-radius: 10px;
   width: fit-content;
   max-width: 30em;
-  margin-bottom: 30px;
+  margin-bottom: 2.5em;
   display: flex;
   align-items: center;
   align-content: space-evenly;
 }
 
-.chat__name {
+.chat__property {
   position: absolute;
   width: max-content;
-  top: -15px;
-  font-weight: 800;
   font-size: x-small;
 }
 
-.chat__nameSender {
+.chat__senderProperty {
   right: 0;
   margin-right: 5px;
 }
 
-.chat__sender {
+.chat__users {
   margin-left: auto;
   background-color: #dcf8c6;
 }
 
+.chat__name {
+  top: -15px;
+  font-weight: 700;
+}
+
 .chat__timestamp {
-  margin-left: 15px;
-  font-size: x-small;
+  bottom: -15px;
 }

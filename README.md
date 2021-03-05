@@ -12,12 +12,12 @@ Technology :
 - Firebase (FireStore, auth)
 - Moment JS
 - Vercel (Hosting)
+- Emoji Mart
 
 ## Next Features!
 
 - Mobile Responsive (half)
 - Working search feature
-- Emoticon
 - More styling
 - Change log Page !
 <!-- https://material-ui.com/guides/composition/#link -->

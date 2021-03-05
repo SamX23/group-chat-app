@@ -39,7 +39,7 @@
   margin: unset;
   overflow: hidden;
   text-overflow: ellipsis;
-  height: 25px;
+  max-height: 1.5em;
 }
 
 .sidebarChat__option {

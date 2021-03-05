@@ -2,7 +2,7 @@ import { useState } from "react";
 import { firestore } from "firebase";
 import { createStyles, makeStyles } from "@material-ui/core/styles";
 import { InsertEmoticon } from "@material-ui/icons";
-import { IconButton, Input, Button, Box } from "@material-ui/core";
+import { Popover, IconButton, Input, Button, Box } from "@material-ui/core";
 import PropTypes from "prop-types";
 import "emoji-mart/css/emoji-mart.css";
 import { Picker } from "emoji-mart";
@@ -42,7 +42,8 @@ const useStyles = makeStyles(() =>
 const ChatInput = ({ db, roomId, user }) => {
   const classes = useStyles();
   const [message, setMessage] = useState("");
-  const [emojiState, setEmojiState] = useState(false);
+  const [showPicker, setShowpicker] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
 
   const sendMessage = (event) => {
     event.preventDefault();
@@ -65,33 +66,47 @@ const ChatInput = ({ db, roomId, user }) => {
       .catch((err) => console.error("Error writing document: ", err));
 
     setMessage("");
-    setEmojiState(false);
   };
 
-  const showPicker = (event) => {
+  const handleClick = (event) => {
     event.preventDefault();
-    setEmojiState(!emojiState);
+    setShowpicker(!showPicker);
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
   };
 
   const addEmoji = (emoji) => {
     setMessage(message + emoji.native);
   };
 
+  const open = Boolean(anchorEl);
+  const id = open ? "emoticon-popover" : undefined;
+
   return (
     <Box className={classes.root}>
-      <IconButton aria-label="insert emoticon" onClick={showPicker}>
+      <IconButton aria-label="insert emoticon" onClick={handleClick}>
         <InsertEmoticon />
       </IconButton>
 
-      {emojiState && (
-        <span className="chat__emojiPicker">
-          <Picker
-            showPreview={false}
-            showSkinTones={false}
-            onSelect={addEmoji}
-          />
-        </span>
-      )}
+      <Popover
+        id={id}
+        open={open}
+        anchorEl={anchorEl}
+        onClose={handleClose}
+        anchorOrigin={{
+          vertical: "top",
+          horizontal: "center",
+        }}
+        transformOrigin={{
+          vertical: "bottom",
+          horizontal: "center",
+        }}
+      >
+        <Picker showPreview={false} showSkinTones={false} onSelect={addEmoji} />
+      </Popover>
 
       <form className={classes.form}>
         <Input

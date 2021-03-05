@@ -4,6 +4,8 @@ import { createStyles, makeStyles } from "@material-ui/core/styles";
 import { InsertEmoticon } from "@material-ui/icons";
 import { IconButton, Input, Button, Box } from "@material-ui/core";
 import PropTypes from "prop-types";
+import "emoji-mart/css/emoji-mart.css";
+import { Picker } from "emoji-mart";
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -39,14 +41,16 @@ const useStyles = makeStyles(() =>
 
 const ChatInput = ({ db, roomId, user }) => {
   const classes = useStyles();
-  const [input, setInput] = useState("");
+  const [message, setMessage] = useState("");
+  const [emojiState, setEmojiState] = useState(false);
+
   const sendMessage = (event) => {
     event.preventDefault();
     db.collection("rooms")
       .doc(roomId)
       .collection("messages")
       .add({
-        message: input,
+        message,
         name: user.displayName,
         uid: user.uid,
         timestamp: firestore.FieldValue.serverTimestamp(),
@@ -60,18 +64,39 @@ const ChatInput = ({ db, roomId, user }) => {
       })
       .catch((err) => console.error("Error writing document: ", err));
 
-    setInput("");
+    setMessage("");
+    setEmojiState(false);
+  };
+
+  const showPicker = (event) => {
+    event.preventDefault();
+    setEmojiState(!emojiState);
+  };
+
+  const addEmoji = (emoji) => {
+    setMessage(message + emoji.native);
   };
 
   return (
     <Box className={classes.root}>
-      <IconButton aria-label="insert emoticon">
+      <IconButton aria-label="insert emoticon" onClick={showPicker}>
         <InsertEmoticon />
       </IconButton>
+
+      {emojiState && (
+        <span className="chat__emojiPicker">
+          <Picker
+            showPreview={false}
+            showSkinTones={false}
+            onSelect={addEmoji}
+          />
+        </span>
+      )}
+
       <form className={classes.form}>
         <Input
-          value={input}
-          onChange={(event) => setInput(event.target.value)}
+          value={message}
+          onChange={(event) => setMessage(event.target.value)}
           placeholder="Type a message"
           inputProps={{ "aria-label": "description" }}
           type="text"

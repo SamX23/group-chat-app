@@ -92,3 +92,9 @@
 .chat__timestamp {
   bottom: -15px;
 }
+
+.chat__emojiPicker {
+  position: absolute;
+  bottom: 8em;
+  z-index: 99;
+}

@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { useHistory, Link } from "react-router-dom";
-import { firestore } from "firebase";
 import { Chat as ChatIcon, MoreVert, SearchOutlined } from "@material-ui/icons";
 import IconButton from "@material-ui/core/IconButton";
 import Avatar from "@material-ui/core/Avatar";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import InputBase from "@material-ui/core/InputBase";
+import firebase from "firebase/app";
+import "firebase/firestore";
 import db, { auth } from "../../firebase";
 import { useStateValue } from "../../store/StateProvider";
 
@@ -20,7 +21,7 @@ export default function SidebarHeader() {
     if (roomName) {
       db.collection("rooms").add({
         name: roomName,
-        datecreated: firestore.FieldValue.serverTimestamp(),
+        datecreated: firebase.firestore.FieldValue.serverTimestamp(),
       });
     }
   };

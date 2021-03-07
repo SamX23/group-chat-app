@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { firestore } from "firebase";
+import firebase from "firebase/app";
+import "firebase/firestore";
 import { createStyles, makeStyles } from "@material-ui/core/styles";
 import { InsertEmoticon } from "@material-ui/icons";
 import { Popover, IconButton, Input, Button, Box } from "@material-ui/core";
@@ -54,14 +55,14 @@ const ChatInput = ({ db, roomId, user }) => {
         message,
         name: user.displayName,
         uid: user.uid,
-        timestamp: firestore.FieldValue.serverTimestamp(),
+        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
       })
       .catch((err) => console.error("Error writing document: ", err));
 
     db.collection("rooms")
       .doc(roomId)
       .update({
-        datecreated: firestore.FieldValue.serverTimestamp(),
+        datecreated: firebase.firestore.FieldValue.serverTimestamp(),
       })
       .catch((err) => console.error("Error writing document: ", err));
 

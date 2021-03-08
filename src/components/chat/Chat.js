@@ -13,6 +13,13 @@ export default function Chat() {
   const [messages, setMessages] = useState([]);
   const [{ user }] = useStateValue();
   const { roomId } = useParams([]);
+  const timeSource = (message) => message.timestamp?.toDate();
+  const showDate = () => {
+    if (moment(timeSource).fromNow() > moment().calendar()) {
+      return moment(timeSource).fromNow();
+    }
+    return moment(timeSource).calendar();
+  };
 
   useEffect(() => {
     let isMounted = true;
@@ -43,14 +50,6 @@ export default function Chat() {
     setSeed(Math.floor(Math.random() * 5000));
   }, []);
 
-  const showDate = (message) => {
-    const source = message.timestamp?.toDate();
-    if (moment(source).fromNow() > moment().calendar()) {
-      return moment(source).fromNow();
-    }
-    return moment(source).calendar();
-  };
-
   return (
     <div className="chat">
       <ChatHeader
@@ -64,6 +63,7 @@ export default function Chat() {
       />
 
       <ChatBody messages={messages} showDate={showDate} user={user} />
+
       <ChatInput db={db} roomId={roomId} user={user} />
     </div>
   );

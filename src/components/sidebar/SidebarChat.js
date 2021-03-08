@@ -7,16 +7,19 @@ import db from "../../firebase";
 const SidebarChat = ({ id, name }) => {
   const [seed, setSeed] = useState("");
   const [messages, setMessages] = useState("");
+  const getChat = () =>
+    db
+      .collection("rooms")
+      .doc(id)
+      .collection("messages")
+      .orderBy("timestamp", "desc")
+      .onSnapshot((snapshot) =>
+        setMessages(snapshot.docs.map((doc) => doc.data()))
+      );
 
   useEffect(() => {
     if (id) {
-      db.collection("rooms")
-        .doc(id)
-        .collection("messages")
-        .orderBy("timestamp", "desc")
-        .onSnapshot((snapshot) =>
-          setMessages(snapshot.docs.map((doc) => doc.data()))
-        );
+      getChat();
     }
   }, [id]);
 

@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { useEffect, useRef } from "react";
-import MessageFormatter from "../MessageFormatter";
+import MessageFormatter from "../../globals/MessageFormatter";
 
 const ChatBody = ({ messages, showDate, user }) => {
   const messagesEndRef = useRef(null);

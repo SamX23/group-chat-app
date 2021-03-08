@@ -14,11 +14,12 @@ export default function Chat() {
   const [{ user }] = useStateValue();
   const { roomId } = useParams([]);
   const timeSource = (message) => message.timestamp?.toDate();
-  const showDate = () => {
-    if (moment(timeSource).fromNow() > moment().calendar()) {
-      return moment(timeSource).fromNow();
+
+  const showDate = (message) => {
+    if (moment(timeSource(message)).fromNow() > moment().calendar()) {
+      return moment(timeSource(message)).fromNow();
     }
-    return moment(timeSource).calendar();
+    return moment(timeSource(message)).calendar();
   };
 
   useEffect(() => {

@@ -14,7 +14,7 @@ export default function App() {
     marginTop: " -30px",
     height: "90vh",
     width: "90vw",
-    boxShadow: "-1px 4px 20px -6px rgba(0, 0, 0, 0.5)",
+    boxShadow: "-1px 4px 20px -6px rgba(0, 0, 0, 0.8)",
   });
   return (
     <Router>

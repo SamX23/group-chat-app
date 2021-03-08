@@ -23,7 +23,8 @@ export default function Navigation() {
   }, [dispatch]);
 
   const AppBackground = styled(Grid)({
-    backgroundColor: "#313131",
+    backgroundImage:
+      "linear-gradient(to right top, #4f4f4f, #65656d, #7a7c8c, #8f94ad, #a2adcf, #9fbde2, #9acdf2, #93deff, #74e7ff, #52f0fe, #37f8f2, #3dffdd)",
   });
 
   return (

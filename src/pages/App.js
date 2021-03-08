@@ -19,7 +19,7 @@ export default function App() {
   return (
     <Router>
       <AppBody>
-        <Suspense fallback={<Loading title="Loading Home.." />}>
+        <Suspense fallback={<Loading title="Loading Navigation.." />}>
           <Sidebar />
           <Switch>
             <Suspense fallback={<Loading title="Loading Chat Body.." />}>

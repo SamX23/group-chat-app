@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Loading from "./animations/Loading";
 import Footer from "./Footer";
 
-const Home = lazy(() => import("../pages/Home"));
+const Navigation = lazy(() => import("../pages/Navigation"));
 
 export default function App() {
   return (
@@ -11,7 +11,7 @@ export default function App() {
       <Suspense fallback={<Loading title="Loading App.." />}>
         <Switch>
           <Route path="/">
-            <Home />
+            <Navigation />
           </Route>
         </Switch>
         <Footer />

@@ -7,7 +7,7 @@ import { useStateValue } from "../store/StateProvider";
 import App from "./App";
 import Login from "./Login/Login";
 
-export default function Home() {
+export default function Navigation() {
   const [{ user }, dispatch] = useStateValue();
 
   useEffect(() => {

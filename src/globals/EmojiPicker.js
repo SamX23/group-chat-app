@@ -49,7 +49,7 @@ const EmojiPicker = ({ addEmoji }) => {
 };
 
 EmojiPicker.propTypes = {
-  addEmoji: PropTypes.objectOf(PropTypes.any),
+  addEmoji: PropTypes.func,
 };
 
 export default EmojiPicker;

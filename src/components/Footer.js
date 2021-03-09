@@ -7,11 +7,10 @@ export default function Footer() {
   const FooterBar = styled(Box)({
     position: "fixed",
     left: 0,
-    bottom: 0,
+    bottom: 5,
     width: "100%",
     textAlign: "center",
     padding: "5px",
-    backgroundColor: "#c1beba",
     "& a": {
       color: "#0400ff",
       textDecoration: "none",

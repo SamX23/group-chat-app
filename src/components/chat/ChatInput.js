@@ -46,8 +46,7 @@ const ChatInput = ({ db, roomId, user }) => {
     setMessage(message + emoji.native);
   };
 
-  const sendMessage = (event) => {
-    event.preventDefault();
+  const createMessage = () => {
     db.collection("rooms")
       .doc(roomId)
       .collection("messages")
@@ -58,13 +57,21 @@ const ChatInput = ({ db, roomId, user }) => {
         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
       })
       .catch((err) => console.error("Error writing document: ", err));
+  };
 
+  const updateTime = () => {
     db.collection("rooms")
       .doc(roomId)
       .update({
         datecreated: firebase.firestore.FieldValue.serverTimestamp(),
       })
       .catch((err) => console.error("Error writing document: ", err));
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    createMessage();
+    updateTime();
 
     setMessage("");
   };
@@ -81,7 +88,7 @@ const ChatInput = ({ db, roomId, user }) => {
           inputProps={{ "aria-label": "description" }}
           type="text"
         />
-        <Button onClick={sendMessage} type="submit">
+        <Button onClick={handleSubmit} type="submit">
           Send a message
         </Button>
       </form>

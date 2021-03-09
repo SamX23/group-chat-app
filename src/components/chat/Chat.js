@@ -56,6 +56,10 @@ export default function Chat() {
 
   useEffect(() => {
     setSeed(Math.floor(Math.random() * 5000));
+
+    return function cleanup() {
+      setSeed(Math.floor(Math.random() * 5000));
+    };
   }, []);
 
   return (

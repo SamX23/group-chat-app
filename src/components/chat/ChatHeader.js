@@ -10,7 +10,7 @@ import PropTypes from "prop-types";
 function ChatHeader({ db, user, messages, roomName, roomId, seed, showDate }) {
   const [anchorEl, setAnchorEl] = useState(null);
   const history = useHistory();
-  const lastSeen = messages[messages.length - 1];
+  const getLastSeenMessage = messages[messages.length - 1];
 
   const toggleOption = (e) => {
     setAnchorEl(e.currentTarget);
@@ -39,7 +39,9 @@ function ChatHeader({ db, user, messages, roomName, roomId, seed, showDate }) {
       />
       <div className="chat__headerInfo">
         <h3>{roomName}</h3>
-        {messages.length > 0 && <p>Last update {showDate(lastSeen)}</p>}
+        {messages.length > 0 && (
+          <p>Last update {showDate(getLastSeenMessage)}</p>
+        )}
       </div>
       <div className="chat__headerMenu">
         <IconButton aria-label="search message">

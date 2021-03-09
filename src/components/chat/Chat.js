@@ -22,25 +22,32 @@ export default function Chat() {
     return moment(timeSource(message)).calendar();
   };
 
+  const getRooms = (isMounted) =>
+    db
+      .collection("rooms")
+      .doc(roomId)
+      .onSnapshot((snapshot) => {
+        if (isMounted) {
+          return snapshot.data() && setRoomName(snapshot.data().name);
+        }
+        return null;
+      });
+
+  const getMessages = (isMounted) =>
+    db
+      .collection("rooms")
+      .doc(roomId)
+      .collection("messages")
+      .orderBy("timestamp", "asc")
+      .onSnapshot((snapshot) => {
+        if (isMounted) setMessages(snapshot.docs.map((doc) => doc.data()));
+      });
+
   useEffect(() => {
     let isMounted = true;
     if (user && roomId) {
-      db.collection("rooms")
-        .doc(roomId)
-        .onSnapshot((snapshot) => {
-          if (isMounted) {
-            return snapshot.data() && setRoomName(snapshot.data().name);
-          }
-          return null;
-        });
-
-      db.collection("rooms")
-        .doc(roomId)
-        .collection("messages")
-        .orderBy("timestamp", "asc")
-        .onSnapshot((snapshot) => {
-          if (isMounted) setMessages(snapshot.docs.map((doc) => doc.data()));
-        });
+      getRooms(isMounted);
+      getMessages(isMounted);
     }
     return () => {
       isMounted = false;

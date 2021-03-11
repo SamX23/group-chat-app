@@ -4,28 +4,29 @@ import { styled } from "@material-ui/core/styles";
 import GoogleButton from "react-google-button";
 
 export const LoginContainer = styled(Grid)({
-  padding: "50px",
-  margin: "20px",
-  textAlign: "center",
-  backgroundImage: "url('/login_background.jpg')",
-  backgroundSize: "cover",
-  backgroundColor: "#13683f",
-  borderRadius: "25px",
-  border: "4px ridge",
-  animation: "lineRGB 1s infinite",
-  transition: "all 1s ease-in-out",
-
+  borderRadius: "1em",
   "&:hover": {
     boxShadow:
       "0px 0px 35px 0px rgba(0, 0, 0, 0.75), 0px 0px 120px 0px rgb(92, 209, 157)",
   },
+  height: "75vh",
+});
+
+export const LoginImages = styled(Grid)({
+  backgroundImage:
+    "radial-gradient(circle, #ff5a5a, #ff4375, #fa3494, #e736b5, #c446d6, #a651d9, #8658d8, #655dd4, #605ab7, #5b569a, #55527e, #4f4d62)",
+  borderRadius: "1em 0 0 1em",
+});
+
+export const LoginForm = styled(Grid)({
+  borderRadius: "0 1em 1em 0",
+  backgroundColor: "azure",
 });
 
 export const LoginText = styled(Typography)({
-  margin: "25px auto",
-  color: "white",
+  color: "black",
   fontFamily: "sans-serif",
-  textShadow: "2px 2px rgba(0, 0, 0, 0.597)",
+  textAlign: "center",
 });
 
 export const LoginButton = styled(GoogleButton)({

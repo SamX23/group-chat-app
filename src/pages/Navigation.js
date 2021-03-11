@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import Box from "@material-ui/core/Box";
+import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
 import { styled } from "@material-ui/core/styles";
 import { auth } from "../firebase";
@@ -23,11 +23,11 @@ export default function Navigation() {
     return () => listener();
   }, [dispatch]);
 
-  const AppBackground = styled(Box)({
-    backgroundImage:
-      "linear-gradient(to right top, #4f4f4f, #65656d, #7a7c8c, #8f94ad, #a2adcf, #9fbde2, #9acdf2, #93deff, #74e7ff, #52f0fe, #37f8f2, #3dffdd)",
+  const AppBackground = styled(Grid)({
+    backgroundImage: "linear-gradient(to bottom, #36d1dc, #5b86e5)",
     height: "100vh",
     width: "100vw",
+    margin: "auto",
     overflow: "auto",
   });
 
@@ -36,7 +36,7 @@ export default function Navigation() {
   });
 
   return (
-    <AppBackground>
+    <AppBackground container justify="center" direction="column">
       <AppContainer>{!user ? <Login /> : <App />}</AppContainer>
     </AppBackground>
   );

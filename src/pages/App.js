@@ -12,7 +12,6 @@ export default function App() {
     display: "flex",
     backgroundColor: "#ededed",
     height: "90vh",
-    width: "90vw",
     boxShadow: "-1px 4px 20px -6px rgba(0, 0, 0, 0.8)",
   });
 

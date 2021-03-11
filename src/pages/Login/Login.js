@@ -1,7 +1,13 @@
 import { auth, providerPublic } from "../../firebase";
 import { actionTypes } from "../../store/reducer";
 import { useStateValue } from "../../store/StateProvider";
-import { LoginButton, LoginContainer, LoginText } from "./style";
+import {
+  LoginButton,
+  LoginContainer,
+  LoginText,
+  LoginImages,
+  LoginForm,
+} from "./style";
 
 export default function Login() {
   // eslint-disable-next-line no-empty-pattern
@@ -19,9 +25,22 @@ export default function Login() {
   };
 
   return (
-    <LoginContainer>
-      <LoginText variant="h3">Group Chat App</LoginText>
-      <LoginButton onClick={signIn} />
+    <LoginContainer container spacing={2}>
+      <LoginImages item xs={6} />
+      <LoginForm
+        container
+        item
+        xs={6}
+        justify="center"
+        alignContent="space-around"
+        direction="column"
+      >
+        <LoginText variant="h2">Welcome</LoginText>
+        <LoginText variant="body1">
+          To log in please click the google log in button
+        </LoginText>
+        <LoginButton onClick={signIn} />
+      </LoginForm>
     </LoginContainer>
   );
 }

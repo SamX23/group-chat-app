@@ -35,10 +35,8 @@ export default function Login() {
         alignContent="space-around"
         direction="column"
       >
-        <LoginText variant="h2">Welcome</LoginText>
-        <LoginText variant="body1">
-          To log in please click the google log in button
-        </LoginText>
+        <LoginText variant="h2">WELCOME</LoginText>
+        <LoginText variant="body1">Sign in to join group room app</LoginText>
         <LoginButton onClick={signIn} />
       </LoginForm>
     </LoginContainer>

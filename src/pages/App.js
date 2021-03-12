@@ -4,7 +4,7 @@ import Box from "@material-ui/core/Box";
 import { styled } from "@material-ui/core/styles";
 import Loading from "../components/animations/Loading";
 
-const Chat = lazy(() => import("../components/chat/Chat"));
+const Room = lazy(() => import("../components/room/Room"));
 const Sidebar = lazy(() => import("../components/sidebar/Sidebar"));
 
 export default function App() {
@@ -21,8 +21,8 @@ export default function App() {
         <Suspense fallback={<Loading title="Loading Navigation.." />}>
           <Sidebar />
           <Switch>
-            <Suspense fallback={<Loading title="Loading Chat Body.." />}>
-              <Route path="/rooms/:roomId" component={Chat} />
+            <Suspense fallback={<Loading title="Loading Room Body.." />}>
+              <Route path="/rooms/:roomId" component={Room} />
             </Suspense>
           </Switch>
         </Suspense>

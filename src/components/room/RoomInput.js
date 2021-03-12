@@ -38,7 +38,7 @@ const useStyles = makeStyles(() =>
   })
 );
 
-const ChatInput = ({ db, roomId, user }) => {
+const RoomInput = ({ db, roomId, user }) => {
   const classes = useStyles();
   const [message, setMessage] = useState("");
 
@@ -96,10 +96,10 @@ const ChatInput = ({ db, roomId, user }) => {
   );
 };
 
-ChatInput.propTypes = {
+RoomInput.propTypes = {
   db: PropTypes.objectOf(PropTypes.any),
   roomId: PropTypes.string,
   user: PropTypes.objectOf(PropTypes.any),
 };
 
-export default ChatInput;
+export default RoomInput;

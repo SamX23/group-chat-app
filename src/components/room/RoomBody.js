@@ -2,13 +2,13 @@ import PropTypes from "prop-types";
 import { useEffect, useRef } from "react";
 import MessageFormatter from "../../globals/MessageFormatter";
 
-const ChatBody = ({ messages, showDate, user }) => {
+const RoomBody = ({ messages, showDate, user }) => {
   const messagesEndRef = useRef(null);
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const Messages = () =>
+  const ChatMessages = () =>
     messages.map((message) => (
       <p
         key={`${message.name}-${message.timestamp}`}
@@ -37,19 +37,19 @@ const ChatBody = ({ messages, showDate, user }) => {
   }, [messages]);
 
   return (
-    <div className="chat__body">
+    <div className="room__body">
       <MessageFormatter>
-        <Messages />
+        <ChatMessages />
       </MessageFormatter>
       <div ref={messagesEndRef} />
     </div>
   );
 };
 
-ChatBody.propTypes = {
+RoomBody.propTypes = {
   messages: PropTypes.instanceOf(Array),
   showDate: PropTypes.func,
   user: PropTypes.objectOf(PropTypes.any),
 };
 
-export default ChatBody;
+export default RoomBody;

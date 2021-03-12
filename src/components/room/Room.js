@@ -3,9 +3,9 @@ import { useParams } from "react-router-dom";
 import moment from "moment";
 import db from "../../firebase";
 import { useStateValue } from "../../store/StateProvider";
-import ChatHeader from "./ChatHeader";
-import ChatBody from "./ChatBody";
-import ChatInput from "./ChatInput";
+import RoomHeader from "./RoomHeader";
+import RoomBody from "./RoomBody";
+import RoomInput from "./RoomInput";
 
 export default function Room() {
   const [seed, setSeed] = useState("");
@@ -64,7 +64,7 @@ export default function Room() {
 
   return (
     <div className="room">
-      <ChatHeader
+      <RoomHeader
         db={db}
         user={user}
         seed={seed}
@@ -74,9 +74,9 @@ export default function Room() {
         showDate={showDate}
       />
 
-      <ChatBody messages={messages} showDate={showDate} user={user} />
+      <RoomBody messages={messages} showDate={showDate} user={user} />
 
-      <ChatInput db={db} roomId={roomId} user={user} />
+      <RoomInput db={db} roomId={roomId} user={user} />
     </div>
   );
 }

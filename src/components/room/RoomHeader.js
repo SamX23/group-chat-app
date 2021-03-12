@@ -7,7 +7,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import IconButton from "@material-ui/core/IconButton";
 import PropTypes from "prop-types";
 
-function ChatHeader({ db, user, messages, roomName, roomId, seed, showDate }) {
+function RoomHeader({ db, user, messages, roomName, roomId, seed, showDate }) {
   const [anchorEl, setAnchorEl] = useState(null);
   const history = useHistory();
   const getLastSeenMessage = messages[messages.length - 1];
@@ -20,7 +20,7 @@ function ChatHeader({ db, user, messages, roomName, roomId, seed, showDate }) {
     setAnchorEl(null);
   };
 
-  const deleteChat = (id) => {
+  const deleteRoom = (id) => {
     const deleteConfirmation = window.confirm("Are you Sure ?");
     if (deleteConfirmation) {
       db.collection("rooms")
@@ -32,25 +32,25 @@ function ChatHeader({ db, user, messages, roomName, roomId, seed, showDate }) {
   };
 
   return (
-    <div className="chat__header">
+    <div className="room__header">
       <Avatar
         src={`https://avatars.dicebear.com/api/human/${seed}.svg`}
         alt="Group Avatar"
       />
-      <div className="chat__headerInfo">
+      <div className="room__headerInfo">
         <h3>{roomName}</h3>
         {messages.length > 0 && (
           <p>Last update {showDate(getLastSeenMessage)}</p>
         )}
       </div>
-      <div className="chat__headerMenu">
+      <div className="room__headerMenu">
         <IconButton aria-label="search message">
           <SearchOutlined />
         </IconButton>
         {user.uid === process.env.REACT_APP_ADMIN && (
           <IconButton
             aria-label="option menu"
-            aria-controls="chat-option-menu"
+            aria-controls="room-option-menu"
             aria-haspopup="true"
             className="sidebar__option"
             onClick={toggleOption}
@@ -59,20 +59,20 @@ function ChatHeader({ db, user, messages, roomName, roomId, seed, showDate }) {
           </IconButton>
         )}
         <Menu
-          id="chat-option-menu"
+          id="room-option-menu"
           anchorEl={anchorEl}
           keepMounted
           open={Boolean(anchorEl)}
           onClose={handleClose}
         >
-          <MenuItem onClick={() => deleteChat(roomId)}>Delete Room</MenuItem>
+          <MenuItem onClick={() => deleteRoom(roomId)}>Delete Room</MenuItem>
         </Menu>
       </div>
     </div>
   );
 }
 
-ChatHeader.propTypes = {
+RoomHeader.propTypes = {
   db: PropTypes.objectOf(PropTypes.any),
   user: PropTypes.objectOf(PropTypes.any),
   messages: PropTypes.instanceOf(Array),
@@ -82,4 +82,4 @@ ChatHeader.propTypes = {
   showDate: PropTypes.func,
 };
 
-export default ChatHeader;
+export default RoomHeader;

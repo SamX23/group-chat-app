@@ -7,7 +7,7 @@ import ChatHeader from "./ChatHeader";
 import ChatBody from "./ChatBody";
 import ChatInput from "./ChatInput";
 
-export default function Chat() {
+export default function Room() {
   const [seed, setSeed] = useState("");
   const [roomName, setRoomName] = useState("");
   const [messages, setMessages] = useState([]);
@@ -63,7 +63,7 @@ export default function Chat() {
   }, []);
 
   return (
-    <div className="chat">
+    <div className="room">
       <ChatHeader
         db={db}
         user={user}

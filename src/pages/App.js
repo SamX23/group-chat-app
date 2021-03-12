@@ -18,10 +18,10 @@ export default function App() {
   return (
     <Router>
       <AppBody>
-        <Suspense fallback={<Loading title="Loading Navigation.." />}>
+        <Suspense fallback={<Loading title="Loading App Pages" />}>
           <Sidebar />
           <Switch>
-            <Suspense fallback={<Loading title="Loading Room Body.." />}>
+            <Suspense fallback={<Loading title="Loading Rooms" />}>
               <Route path="/rooms/:roomId" component={Room} />
             </Suspense>
           </Switch>

@@ -11,7 +11,11 @@ function Loading({ title }) {
   });
 
   return (
-    <LoadingArea>
+    <LoadingArea
+      justify="center"
+      alignContent="space-around"
+      direction="column"
+    >
       <CircularProgress />
       <Box>{title || "Loading..."}</Box>
     </LoadingArea>

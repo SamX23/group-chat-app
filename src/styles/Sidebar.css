@@ -55,7 +55,7 @@
   margin-right: 5px;
 }
 
-.sidebar__chats {
+.sidebar__rooms {
   flex: 1;
   background-color: white;
   overflow-y: scroll;

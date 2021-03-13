@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import db from "../../firebase";
 
-const SidebarChat = ({ id, name }) => {
+const SidebarRoom = ({ id, name }) => {
   const [seed, setSeed] = useState("");
   const [messages, setMessages] = useState("");
-  const getChat = () =>
+  const getRoom = () =>
     db
       .collection("rooms")
       .doc(id)
@@ -19,7 +19,7 @@ const SidebarChat = ({ id, name }) => {
 
   useEffect(() => {
     if (id) {
-      getChat();
+      getRoom();
     }
   }, [id]);
 
@@ -28,14 +28,14 @@ const SidebarChat = ({ id, name }) => {
   }, []);
 
   return (
-    <div className="sidebarChat">
+    <div className="sidebar__Room">
       <Link to={`/rooms/${id}`}>
-        <div className="sidebarChat__container">
+        <div className="sidebar__RoomContainer">
           <Avatar
             src={`https://avatars.dicebear.com/api/human/${seed}.svg`}
             alt="Group Avatar"
           />
-          <div className="sidebarChat__info">
+          <div className="sidebar__RoomInfo">
             <h2>{name}</h2>
             <p>{messages[0]?.message}</p>
           </div>
@@ -45,9 +45,9 @@ const SidebarChat = ({ id, name }) => {
   );
 };
 
-SidebarChat.propTypes = {
+SidebarRoom.propTypes = {
   id: PropTypes.string,
   name: PropTypes.string,
 };
 
-export default SidebarChat;
+export default SidebarRoom;

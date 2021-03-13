@@ -2,7 +2,7 @@ import { lazy, Suspense, useEffect, useState } from "react";
 import db from "../../firebase";
 import Loading from "../animations/Loading";
 
-const SidebarChat = lazy(() => import("./SidebarChat"));
+const SidebarRoom = lazy(() => import("./SidebarRoom"));
 const SidebarHeader = lazy(() => import("./SidebarHeader"));
 
 export default function Sidebar() {
@@ -29,9 +29,9 @@ export default function Sidebar() {
     <div className="sidebar">
       <SidebarHeader />
       <Suspense fallback={<Loading />}>
-        <div className="sidebar__chats">
+        <div className="sidebar__rooms">
           {rooms.map((room) => (
-            <SidebarChat key={room.id} id={room.id} name={room.data.name} />
+            <SidebarRoom key={room.id} id={room.id} name={room.data.name} />
           ))}
         </div>
       </Suspense>

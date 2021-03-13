@@ -16,7 +16,7 @@ export default function SidebarHeader() {
   const [anchorEl, setAnchorEl] = useState(null);
   const history = useHistory();
 
-  const createChat = () => {
+  const createRoom = () => {
     const roomName = prompt("Please enter name for chat room");
     if (roomName) {
       db.collection("rooms").add({
@@ -53,7 +53,7 @@ export default function SidebarHeader() {
           </Link>
         </div>
         <div className="sidebar__headerRight">
-          <IconButton aria-label="new chat" onClick={createChat}>
+          <IconButton aria-label="new-room" onClick={createRoom}>
             <ChatIcon />
           </IconButton>
           <IconButton
@@ -81,7 +81,7 @@ export default function SidebarHeader() {
           <SearchOutlined />
           <InputBase
             inputProps={{ "aria-label": "search bar" }}
-            placeholder="Search or start new chat"
+            placeholder="Search or start new room"
             type="text"
           />
         </div>

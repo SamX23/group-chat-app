@@ -20,6 +20,7 @@ Technology :
 - Working search feature
 - More styling
 - Change log Page !
+- Awesome PWA Install - https://github.com/pwa-builder/pwa-install
 <!-- https://material-ui.com/guides/composition/#link -->
 
 ### Installation

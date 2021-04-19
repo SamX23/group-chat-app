@@ -10,7 +10,7 @@
   padding: 15px 5px;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid lightgray;
+  border-bottom: 1px solid #51c4d3;
 }
 
 .room__header > .MuiSvgIcon-root {
@@ -44,10 +44,7 @@
 
 .room__body {
   flex: 1;
-  width: auto;
-  background-image: url("https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png");
-  background-repeat: repeat;
-  background-position: center;
+  background-color: #7ccfda;
   padding: 0.5em;
   overflow-y: scroll;
 }
@@ -80,7 +77,7 @@
 
 .chat__users {
   margin-left: auto;
-  background-color: #dcf8c6;
+  background-color: #bddfeb;
 }
 
 .chat__name {

@@ -20,7 +20,7 @@ export const LoginImages = styled(Grid)({
 
 export const LoginForm = styled(Grid)({
   borderRadius: "0 1em 1em 0",
-  backgroundColor: "azure",
+  backgroundColor: "#d8e3e7",
 });
 
 export const LoginText = styled(Typography)({

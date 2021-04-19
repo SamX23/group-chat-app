@@ -10,9 +10,9 @@ const Sidebar = lazy(() => import("../components/sidebar/Sidebar"));
 export default function App() {
   const AppBody = styled(Box)({
     display: "flex",
-    backgroundColor: "#ededed",
+    backgroundColor: "#d8e3e7",
     height: "90vh",
-    boxShadow: "-1px 4px 20px -6px rgba(0, 0, 0, 0.8)",
+    boxShadow: "-1px 4px 20px -6px #d8e3e7",
   });
 
   return (

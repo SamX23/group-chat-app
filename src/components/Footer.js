@@ -11,21 +11,20 @@ export default function Footer() {
     width: "100%",
     textAlign: "center",
     padding: "5px",
+    color: "#d8e3e7",
     "& a": {
-      color: "#0400ff",
       textDecoration: "none",
     },
   });
 
   return (
     <FooterBar>
-      <Typography variant="body1">
+      <Typography variant="h6">
         Made with{" "}
         <span role="img" aria-label="love">
           ♥️
         </span>{" "}
-        by
-        <Link href="https://samx23.github.io"> Sami Kalammallah</Link> ©{" "}
+        by <Link href="https://samx23.github.io">Sami Kalammallah</Link> ©{" "}
         {new Date().getFullYear()}
       </Typography>
     </FooterBar>

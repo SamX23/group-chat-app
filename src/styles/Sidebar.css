@@ -2,19 +2,18 @@
   display: flex;
   flex-direction: column;
   flex: 0.35;
-  border-right: 1px solid lightgray;
+  border-right: 1px solid #51c4d3;
 }
 
 .sidebar__header {
-  border-bottom: 1px solid lightgray;
+  border-bottom: 0.2rem solid #51c4d3;
 }
 
 .sidebar__search {
   display: flex;
   align-items: center;
-  background-color: #ededed;
-  height: 50px;
-  padding: 10px;
+  height: 3rem;
+  padding: 1rem;
 }
 
 .sidebar__searchContainer {
@@ -57,7 +56,7 @@
 
 .sidebar__rooms {
   flex: 1;
-  background-color: white;
+  background-color: #d8e3e7;
   overflow-y: scroll;
 }
 

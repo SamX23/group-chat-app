@@ -5,10 +5,10 @@ import { styled } from "@material-ui/core/styles";
 import { auth } from "../firebase";
 import { actionTypes } from "../store/reducer";
 import { useStateValue } from "../store/StateProvider";
-import App from "./App";
-import Login from "./Login/Login";
+import App from "../pages/App";
+import Login from "../pages/Login/Login";
 
-export default function Navigation() {
+export default function Layout() {
   const [{ user }, dispatch] = useStateValue();
 
   useEffect(() => {
@@ -24,11 +24,9 @@ export default function Navigation() {
   }, [dispatch]);
 
   const AppBackground = styled(Grid)({
-    backgroundImage: "linear-gradient(to bottom, #36d1dc, #5b86e5)",
+    backgroundColor: "#132c33",
     height: "100vh",
     width: "100vw",
-    margin: "auto",
-    overflow: "auto",
   });
 
   const AppContainer = styled(Container)({

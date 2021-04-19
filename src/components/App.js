@@ -1,13 +1,13 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Footer from "./Footer";
-import Navigation from "../pages/Navigation";
+import Layout from "./Layout";
 
 export default function App() {
   return (
     <Router>
       <Switch>
         <Route path="/">
-          <Navigation />
+          <Layout />
         </Route>
       </Switch>
       <Footer />

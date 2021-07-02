@@ -1,7 +1,6 @@
 # Group Chat Web
 
-A group chat app inspired from WhatsApp web, built using React and firebase.
-Still trying to make all features works fine.
+A simple web app inspired from WhatsApp web, built using React and firebase. Still trying to make all features works fine.
 
 Technology :
 

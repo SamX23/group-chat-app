@@ -20,7 +20,7 @@ export default function Footer() {
   return (
     <FooterBar>
       <Typography variant="h6">
-        Made with{" "}
+        Truly developed with{" "}
         <span role="img" aria-label="love">
           ♥️
         </span>{" "}

@@ -1,4 +1,4 @@
-# Group Chat Web
+# Group Chat App
 
 A simple web app inspired from WhatsApp web, built using React and firebase. Still trying to make all features works fine.
 
@@ -18,7 +18,7 @@ Technology :
 - Mobile Responsive (half)
 - Working search feature
 - More styling
-- Change log Page !
+- Changelog Page !
 - Awesome PWA Install - https://github.com/pwa-builder/pwa-install
 <!-- https://material-ui.com/guides/composition/#link -->
 

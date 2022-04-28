@@ -4,7 +4,7 @@ import "firebase/firestore";
 import { createStyles, makeStyles } from "@material-ui/core/styles";
 import { Input, Button, Box } from "@material-ui/core";
 import PropTypes from "prop-types";
-import EmojiPicker from "../../globals/EmojiPicker";
+import EmojiPicker from "../../utility/EmojiPicker";
 
 const useStyles = makeStyles(() =>
   createStyles({

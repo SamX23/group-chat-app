@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { useEffect, useRef } from "react";
-import MessageFormatter from "../../globals/MessageFormatter";
+import MessageFormatter from "../../utility/MessageFormatter";
 import RoomMessage from "./RoomMessage";
 
 const RoomBody = ({ messages, showDate, user }) => {

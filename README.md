@@ -28,8 +28,8 @@ Install the dependencies and start the server.
 
 ```sh
 $ git clone https://github.com/SamX23/group-chat-app.git
-$ yarn
-$ yarn start
+$ npm install
+$ npm run start
 ```
 
 ### Contribution

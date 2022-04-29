@@ -47,6 +47,7 @@
   background-color: #7ccfda;
   padding: 0.5em;
   overflow-y: scroll;
+  overflow-wrap: anywhere;
 }
 
 .chat__message {

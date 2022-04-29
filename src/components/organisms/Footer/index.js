@@ -11,7 +11,6 @@ export default function Footer() {
     width: "100%",
     textAlign: "center",
     padding: "5px",
-    color: "#d8e3e7",
     "& a": {
       textDecoration: "none",
     },
@@ -19,13 +18,16 @@ export default function Footer() {
 
   return (
     <FooterBar>
-      <Typography variant="h6">
+      <Typography variant="h6" color="primary">
         Truly developed with{" "}
         <span role="img" aria-label="love">
           ♥️
         </span>{" "}
-        by <Link href="https://samx23.github.io">Sami Kalammallah</Link> ©{" "}
-        {new Date().getFullYear()}
+        by{" "}
+        <Link color="secondary" href="https://samx23.github.io">
+          Sami Kalammallah
+        </Link>{" "}
+        © {new Date().getFullYear()}
       </Typography>
     </FooterBar>
   );

@@ -88,3 +88,31 @@
 .chat__timestamp {
   bottom: -15px;
 }
+
+.room__input {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 62px;
+}
+
+.room__input .muisvgicon-root {
+  margin: 10px;
+  color: gray;
+}
+
+.room__input form {
+  flex: 1;
+  display: flex;
+  padding-right: 20px;
+}
+
+.room__input .muiinput-root {
+  flex: 1;
+  border: none;
+  padding: 10px;
+}
+
+.room__input button {
+  display: none;
+}

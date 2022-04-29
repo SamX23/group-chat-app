@@ -1,14 +1,23 @@
-import ReactDOM from "react-dom";
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { ThemeProvider } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+import theme from "./styles/theme";
+import "@fontsource/roboto/300.css";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/500.css";
+import "@fontsource/roboto/700.css";
 import "./styles/index.css";
-import CssBaseline from "@material-ui/core/CssBaseline";
 import { StateProvider } from "./store/StateProvider";
-import App from "./components/App";
+import Router from "./components/template/Router";
 import reducer, { initialState } from "./store/reducer";
 
-ReactDOM.render(
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
   <StateProvider initialState={initialState} reducer={reducer}>
-    <CssBaseline />
-    <App />
-  </StateProvider>,
-  document.getElementById("root")
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Router />
+    </ThemeProvider>
+  </StateProvider>
 );

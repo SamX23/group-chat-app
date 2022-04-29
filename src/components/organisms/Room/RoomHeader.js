@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { MoreVert, SearchOutlined } from "@mui/icons-material";
 import Avatar from "@mui/material/Avatar";
 import Menu from "@mui/material/Menu";
@@ -9,7 +9,7 @@ import PropTypes from "prop-types";
 
 function RoomHeader({ db, user, messages, roomName, roomId, seed, showDate }) {
   const [anchorEl, setAnchorEl] = useState(null);
-  const history = useHistory();
+  const navigate = useNavigate();
   const getLastSeenMessage = messages[messages.length - 1];
 
   const toggleOption = (e) => {
@@ -26,7 +26,7 @@ function RoomHeader({ db, user, messages, roomName, roomId, seed, showDate }) {
       db.collection("rooms")
         .doc(id)
         .delete()
-        .then(() => history.push("/"))
+        .then(() => navigate("/"))
         .catch((e) => console.error("Error removing document: ", e));
     }
   };

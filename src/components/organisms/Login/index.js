@@ -36,7 +36,9 @@ export default function Login() {
         direction="column"
       >
         <LoginText variant="h2">WELCOME</LoginText>
-        <LoginText variant="body1">Sign in to join group room app</LoginText>
+        <LoginText variant="body1">
+          Sign in to join {process.env.REACT_APP_NAME}
+        </LoginText>
         <LoginButton onClick={signIn} />
       </LoginForm>
     </LoginContainer>

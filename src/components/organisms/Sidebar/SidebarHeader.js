@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useHistory, Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import {
   Chat as ChatIcon,
   MoreVert,
@@ -18,7 +18,7 @@ import { useStateValue } from "../../../store/StateProvider";
 export default function SidebarHeader() {
   const [{ user }] = useStateValue();
   const [anchorEl, setAnchorEl] = useState(null);
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const createRoom = () => {
     const roomName = prompt("Please enter name for chat room");
@@ -39,7 +39,7 @@ export default function SidebarHeader() {
     if (user) {
       auth
         .signOut()
-        .then(() => history.push("/"))
+        .then(() => navigate("/"))
         .then(() => localStorage.removeItem("user"));
     }
   };

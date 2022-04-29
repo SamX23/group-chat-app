@@ -1,13 +1,13 @@
 import { useEffect } from "react";
+import PropTypes from "prop-types";
 import { auth } from "../../firebase";
 import { actionTypes } from "../../store/reducer";
 import { useStateValue } from "../../store/StateProvider";
-import App from "../pages";
-import Login from "../pages/Login";
 import Footer from "../organisms/Footer";
 import { AppBackground, AppContainer } from "./style";
+import Login from "../organisms/Login";
 
-export default function Layout() {
+export default function Layout({ children }) {
   const [{ user }, dispatch] = useStateValue();
 
   useEffect(() => {
@@ -24,8 +24,12 @@ export default function Layout() {
 
   return (
     <AppBackground container justifyContent="center" direction="column">
-      <AppContainer>{!user ? <Login /> : <App />}</AppContainer>
+      <AppContainer>{user ? children : <Login />}</AppContainer>
       <Footer />
     </AppBackground>
   );
 }
+
+Layout.propTypes = {
+  children: PropTypes.node,
+};

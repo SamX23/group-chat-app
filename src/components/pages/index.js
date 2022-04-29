@@ -1,5 +1,5 @@
 import { lazy, Suspense } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
 import Loading from "../atoms/Loading";
@@ -17,17 +17,20 @@ export default function App() {
   });
 
   return (
-    <Router>
-      <AppBody>
-        <Suspense fallback={<Loading title="Loading App Pages" />}>
-          <Sidebar />
-          <Switch>
-            <Suspense fallback={<Loading title="Loading Rooms" />}>
-              <Route path="/rooms/:roomId" component={Room} />
-            </Suspense>
-          </Switch>
-        </Suspense>
-      </AppBody>
-    </Router>
+    <AppBody>
+      <Suspense fallback={<Loading />}>
+        <Sidebar />
+        <Routes>
+          <Route
+            path="rooms/:roomId"
+            element={
+              <Suspense fallback={<Loading />}>
+                <Room />
+              </Suspense>
+            }
+          />
+        </Routes>
+      </Suspense>
+    </AppBody>
   );
 }

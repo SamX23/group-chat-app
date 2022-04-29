@@ -1,9 +1,9 @@
 import { lazy, Suspense, useEffect, useState } from "react";
-import db from "../../firebase";
-import Loading from "../animations/Loading";
+import db from "../../../firebase";
+import Loading from "../../atoms/Loading";
+import SidebarHeader from "./SidebarHeader";
 
 const SidebarRoom = lazy(() => import("./SidebarRoom"));
-const SidebarHeader = lazy(() => import("./SidebarHeader"));
 
 export default function Sidebar() {
   const [rooms, setRooms] = useState([]);

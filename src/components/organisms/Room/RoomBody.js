@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { useEffect, useRef } from "react";
-import MessageFormatter from "../../utility/MessageFormatter";
+import MessageFormatter from "../../../utility/MessageFormatter";
 import RoomMessage from "./RoomMessage";
 
 const RoomBody = ({ messages, showDate, user }) => {
@@ -17,7 +17,12 @@ const RoomBody = ({ messages, showDate, user }) => {
     <div className="room__body">
       <MessageFormatter>
         {messages.map((message) => (
-          <RoomMessage message={message} showDate={showDate} user={user} />
+          <RoomMessage
+            key={message.uid}
+            message={message}
+            showDate={showDate}
+            user={user}
+          />
         ))}
       </MessageFormatter>
       <div ref={messagesEndRef} />

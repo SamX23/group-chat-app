@@ -1,6 +1,6 @@
-import { auth, providerPublic } from "../../firebase";
-import { actionTypes } from "../../store/reducer";
-import { useStateValue } from "../../store/StateProvider";
+import { auth, providerPublic } from "../../../firebase";
+import { actionTypes } from "../../../store/reducer";
+import { useStateValue } from "../../../store/StateProvider";
 import {
   LoginButton,
   LoginContainer,
@@ -31,7 +31,7 @@ export default function Login() {
         container
         item
         xs={6}
-        justify="center"
+        justifyContent="center"
         alignContent="space-around"
         direction="column"
       >

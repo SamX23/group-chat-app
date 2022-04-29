@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { InsertEmoticon } from "@material-ui/icons";
-import { Popover, IconButton } from "@material-ui/core";
+import InsertEmoticonIcon from "@mui/icons-material/InsertEmoticon";
+import { Popover, IconButton } from "@mui/material";
 import "emoji-mart/css/emoji-mart.css";
 import { Picker } from "emoji-mart";
 import PropTypes from "prop-types";
@@ -25,7 +25,7 @@ const EmojiPicker = ({ addEmoji }) => {
   return (
     <>
       <IconButton aria-label="insert emoticon" onClick={handleClick}>
-        <InsertEmoticon />
+        <InsertEmoticonIcon />
       </IconButton>
 
       <Popover

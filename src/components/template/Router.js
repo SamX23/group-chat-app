@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Footer from "./Footer";
 import Layout from "./Layout";
 
 export default function App() {
@@ -10,7 +9,6 @@ export default function App() {
           <Layout />
         </Route>
       </Switch>
-      <Footer />
     </Router>
   );
 }

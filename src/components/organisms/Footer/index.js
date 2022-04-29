@@ -1,7 +1,7 @@
-import Box from "@material-ui/core/Box";
-import Typography from "@material-ui/core/Typography";
-import Link from "@material-ui/core/Link";
-import { styled } from "@material-ui/core/styles";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Link from "@mui/material/Link";
+import { styled } from "@mui/material/styles";
 
 export default function Footer() {
   const FooterBar = styled(Box)({

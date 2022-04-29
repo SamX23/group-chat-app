@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import Avatar from "@material-ui/core/Avatar";
+import Avatar from "@mui/material/Avatar";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import db from "../../firebase";
+import db from "../../../firebase";
 
 const SidebarRoom = ({ id, name }) => {
   const [seed, setSeed] = useState("");

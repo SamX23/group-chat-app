@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import moment from "moment";
-import db from "../../firebase";
-import { useStateValue } from "../../store/StateProvider";
+import db from "../../../firebase";
+import { useStateValue } from "../../../store/StateProvider";
 import RoomHeader from "./RoomHeader";
 import RoomBody from "./RoomBody";
 import RoomInput from "./RoomInput";

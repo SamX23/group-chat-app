@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { MoreVert, SearchOutlined } from "@material-ui/icons";
-import Avatar from "@material-ui/core/Avatar";
-import Menu from "@material-ui/core/Menu";
-import MenuItem from "@material-ui/core/MenuItem";
-import IconButton from "@material-ui/core/IconButton";
+import { MoreVert, SearchOutlined } from "@mui/icons-material";
+import Avatar from "@mui/material/Avatar";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import IconButton from "@mui/material/IconButton";
 import PropTypes from "prop-types";
 
 function RoomHeader({ db, user, messages, roomName, roomId, seed, showDate }) {

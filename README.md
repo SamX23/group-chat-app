@@ -4,9 +4,9 @@ A simple web app inspired from WhatsApp web, built using React and firebase. Sti
 
 Technology :
 
-- React
+- React 18
 - PWA
-- Material UI/Icon
+- MUI 5
 - [Random profile API](https://avatars.dicebear.com/)
 - Firebase (FireStore, auth)
 - Moment JS
@@ -34,7 +34,7 @@ $ npm run start
 
 ### Contribution
 
-I will receive any PR (Pull Request) from anyone! Please read the CONTRIBUTING.md for more informations.
+I will receive any PR (Pull Request) from anyone! Please read the CONTRIBUTING.md for more information.
 
 ##### Started on 15 September 2020
 

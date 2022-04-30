@@ -1,13 +1,10 @@
+import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
+import GoogleButton from "react-google-button";
 import { auth, providerPublic } from "../../../firebase";
 import { actionTypes } from "../../../store/reducer";
 import { useStateValue } from "../../../store/StateProvider";
-import {
-  LoginButton,
-  LoginContainer,
-  LoginText,
-  LoginImages,
-  LoginForm,
-} from "./style";
+import "./style.css";
 
 export default function Login() {
   // eslint-disable-next-line no-empty-pattern
@@ -25,22 +22,26 @@ export default function Login() {
   };
 
   return (
-    <LoginContainer container spacing={2}>
-      <LoginImages item xs={6} />
-      <LoginForm
+    <Grid className="Login__Container" container spacing={2}>
+      <Grid className="Login__Images" item xs={12} md={6} />
+      <Grid
+        className="Login__Form"
         container
         item
-        xs={6}
+        xs={12}
+        md={6}
         justifyContent="center"
         alignContent="space-around"
         direction="column"
       >
-        <LoginText variant="h2">WELCOME</LoginText>
-        <LoginText variant="body1">
+        <Typography fontWeight="bold" className="Login__Text" variant="h2">
+          WELCOME
+        </Typography>
+        <Typography className="Login__Text" variant="body1">
           Sign in to join {process.env.REACT_APP_NAME}
-        </LoginText>
-        <LoginButton onClick={signIn} />
-      </LoginForm>
-    </LoginContainer>
+        </Typography>
+        <GoogleButton className="Login__Button" onClick={signIn} />
+      </Grid>
+    </Grid>
   );
 }

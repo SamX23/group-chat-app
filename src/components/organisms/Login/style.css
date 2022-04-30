@@ -1,0 +1,51 @@
+.Login__Container {
+  transition: all 0.5s ease-in-out;
+}
+
+.Login__Container:hover {
+  box-shadow: 0px 0px 35px 0px rgba(0, 0, 0, 0.75),
+    0px 0px 60px 0px rgb(92, 209, 157);
+}
+
+.Login__Images {
+  background-image: linear-gradient(to right, #49a09d, #5f2c82);
+}
+
+.Login__Form {
+  background-color: #d8e3e7;
+}
+
+.Login__Text {
+  color: black;
+  text-align: center;
+}
+
+.Login__Button {
+  margin: 25px auto;
+}
+
+@media (min-width: 900px) {
+  .Login__Container {
+    border-radius: 15px;
+    min-height: 75vh;
+  }
+  .Login__Images {
+    border-radius: 15px 0 0 15px;
+  }
+  .Login__Form {
+    border-radius: 0 15px 15px 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .Login__Container .MuiGrid-item {
+    padding: 0 !important;
+  }
+  .Login__Images {
+    height: 5rem;
+    border-radius: 5px 5px 0 0;
+  }
+  .Login__Form {
+    border-radius: 0 0 5px 5px;
+  }
+}

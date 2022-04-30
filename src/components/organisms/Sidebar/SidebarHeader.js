@@ -87,6 +87,7 @@ export default function SidebarHeader() {
             inputProps={{ "aria-label": "search bar" }}
             placeholder="Search or start new room"
             type="text"
+            sx={{ fontSize: "13px" }}
           />
         </div>
       </div>

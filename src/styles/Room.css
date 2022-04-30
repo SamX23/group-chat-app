@@ -48,6 +48,8 @@
   padding: 0.5em;
   overflow-y: scroll;
   overflow-wrap: anywhere;
+  background-image: radial-gradient(#ffffff52, 1px, transparent 1px);
+  background-size: calc(10 * 1px) calc(10 * 1px);
 }
 
 .chat__message {
@@ -114,6 +116,6 @@
   padding: 10px;
 }
 
-.room__input button {
+.room__input form button {
   display: none;
 }

@@ -1,10 +1,11 @@
 import { useEffect } from "react";
 import PropTypes from "prop-types";
+import Grid from "@mui/material/Grid";
+import Container from "@mui/material/Container";
 import { auth } from "../../firebase";
 import { actionTypes } from "../../store/reducer";
 import { useStateValue } from "../../store/StateProvider";
 import Footer from "../organisms/Footer";
-import { AppBackground, AppContainer } from "./style";
 import Login from "../organisms/Login";
 
 export default function Layout({ children }) {
@@ -23,10 +24,15 @@ export default function Layout({ children }) {
   }, [dispatch]);
 
   return (
-    <AppBackground container justifyContent="center" direction="column">
-      <AppContainer>{user ? children : <Login />}</AppContainer>
+    <Grid
+      container
+      justifyContent="center"
+      direction="column"
+      sx={{ bgcolor: "#132c33", height: "100vh" }}
+    >
+      <Container maxWidth="md">{user ? children : <Login />}</Container>
       <Footer />
-    </AppBackground>
+    </Grid>
   );
 }
 

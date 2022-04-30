@@ -22,7 +22,7 @@ export default function Login() {
   };
 
   return (
-    <Grid className="Login__Container" container spacing={2}>
+    <Grid className="Login__Container" container sx={{ m: "auto" }}>
       <Grid className="Login__Images" item xs={12} md={6} />
       <Grid
         className="Login__Form"

@@ -53,6 +53,7 @@ const RoomInput = ({ db, roomId, user }) => {
           placeholder="Type a message"
           inputProps={{ "aria-label": "description" }}
           type="text"
+          sx={{ width: "100%" }}
         />
         <Button onClick={handleSubmit} type="submit">
           Send a message

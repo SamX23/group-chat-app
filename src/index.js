@@ -9,7 +9,7 @@ import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import "./styles/index.css";
 import { StateProvider } from "./store/StateProvider";
-import App from "./Router";
+import Router from "./routes";
 import reducer, { initialState } from "./store/reducer";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -18,7 +18,7 @@ root.render(
     <StateProvider initialState={initialState} reducer={reducer}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <App />
+        <Router />
       </ThemeProvider>
     </StateProvider>
   </React.StrictMode>

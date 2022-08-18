@@ -20,6 +20,7 @@
     "react-text-format": "^2.0.28"
   },
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "eject": "react-scripts eject",

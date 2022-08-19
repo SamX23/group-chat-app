@@ -3,14 +3,14 @@ import "firebase/auth";
 import "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_FIREBASE_API,
-  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
-  databaseURL: process.env.REACT_APP_DB_URL,
-  projectId: process.env.REACT_APP_ID,
-  storageBucket: process.env.REACT_APP_STORAGE,
-  messagingSenderId: process.env.REACT_APP_SENDER_ID,
-  appId: process.env.REACT_APP_APP_ID,
-  measurementId: process.env.REACT_APP_MEASURE_ID,
+  apiKey: import.meta.env.VITE_FIREBASE_API,
+  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+  databaseURL: import.meta.env.VITE_DB_URL,
+  projectId: import.meta.env.VITE_ID,
+  storageBucket: import.meta.env.VITE_STORAGE,
+  messagingSenderId: import.meta.env.VITE_SENDER_ID,
+  appId: import.meta.env.VITE_APP_ID,
+  measurementId: import.meta.env.VITE_MEASURE_ID,
 };
 
 const firebaseApp = firebase.initializeApp(firebaseConfig);

@@ -47,7 +47,7 @@ function RoomHeader({ db, user, messages, roomName, roomId, seed, showDate }) {
         <IconButton aria-label="search message">
           <SearchOutlined />
         </IconButton>
-        {user.uid === process.env.REACT_APP_ADMIN && (
+        {user.uid === import.meta.env.REACT_APP_ADMIN && (
           <IconButton
             aria-label="option menu"
             aria-controls="room-option-menu"

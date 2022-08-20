@@ -38,7 +38,7 @@ export default function Login() {
           WELCOME
         </Typography>
         <Typography className="Login__Text" variant="body1">
-          Sign in to join {process.env.REACT_APP_NAME}
+          Sign in to join {import.meta.env.REACT_APP_NAME}
         </Typography>
         <GoogleButton className="Login__Button" onClick={signIn} />
       </Grid>

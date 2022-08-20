@@ -4,6 +4,8 @@ A simple web app inspired from WhatsApp web, built using React and firebase. Sti
 
 Technology :
 
+- PNPM
+- Vite
 - React 18
 - PWA
 - MUI 5
@@ -28,8 +30,8 @@ Install the dependencies and start the server.
 
 ```sh
 $ git clone https://github.com/SamX23/group-chat-app.git
-$ npm install
-$ npm run start
+$ pnpm i
+$ pnpm start
 ```
 
 ### Contribution

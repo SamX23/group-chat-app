@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 
 export const initialState = {
-  user: JSON.parse(localStorage.getItem("user")),
+  user: JSON.parse(sessionStorage.getItem("user")),
 };
 
 export const actionTypes = {

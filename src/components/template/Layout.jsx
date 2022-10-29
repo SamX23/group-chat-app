@@ -12,16 +12,14 @@ export default function Layout({ children }) {
   const [{ user }, dispatch] = useStateValue();
 
   useEffect(() => {
-    const listener = auth.onAuthStateChanged((authUser) => {
-      localStorage.setItem("user", JSON.stringify(authUser));
+    auth.onAuthStateChanged((authUser) => {
+      sessionStorage.setItem("user", JSON.stringify(authUser));
       dispatch({
         type: actionTypes.SET_USER,
         user: authUser,
       });
     });
-
-    return () => listener();
-  }, [dispatch]);
+  }, []);
 
   return (
     <Grid

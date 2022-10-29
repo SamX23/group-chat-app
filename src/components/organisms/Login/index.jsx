@@ -7,9 +7,9 @@ import { useStateValue } from "../../../store/StateProvider";
 import "./style.css";
 
 export default function Login() {
-  // eslint-disable-next-line no-empty-pattern
-  const [{}, dispatch] = useStateValue();
-  const signIn = () => {
+  // eslint-disable-next-line no-unused-vars
+  const [_, dispatch] = useStateValue();
+  const signIn = () =>
     auth
       .signInWithPopup(providerPublic)
       .then((authUser) => {
@@ -19,7 +19,6 @@ export default function Login() {
         });
       })
       .catch((error) => alert(error.message));
-  };
 
   return (
     <Grid className="Login__Container" container sx={{ m: "auto" }}>

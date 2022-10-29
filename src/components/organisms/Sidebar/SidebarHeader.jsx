@@ -22,6 +22,7 @@ export default function SidebarHeader() {
 
   const createRoom = () => {
     const roomName = prompt("Please enter name for chat room");
+
     if (roomName) {
       db.collection("rooms").add({
         name: roomName,
@@ -30,22 +31,12 @@ export default function SidebarHeader() {
     }
   };
 
-  const toggleOption = (e) => {
-    setAnchorEl(e.currentTarget);
-  };
+  const toggleOption = ({ currentTarget }) => setAnchorEl(currentTarget);
+  const handleClose = () => setAnchorEl(null);
 
-  const clickLogout = (event) => {
-    setAnchorEl(event.currentTarget);
-    if (user) {
-      auth
-        .signOut()
-        .then(() => navigate("/"))
-        .then(() => localStorage.removeItem("user"));
-    }
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
+  const clickLogout = ({ currentTarget }) => {
+    setAnchorEl(currentTarget);
+    auth.signOut().then(() => navigate("/"));
   };
 
   return (

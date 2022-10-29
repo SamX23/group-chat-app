@@ -5,13 +5,10 @@ import RoomMessage from "./RoomMessage";
 
 const RoomBody = ({ messages, showDate, user }) => {
   const messagesEndRef = useRef(null);
-  const scrollToBottom = () => {
+  const scrollToBottom = () =>
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
 
-  useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
+  useEffect(() => scrollToBottom(), [messages]);
 
   return (
     <div className="room__body">

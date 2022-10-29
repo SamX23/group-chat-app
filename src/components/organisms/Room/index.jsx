@@ -22,21 +22,16 @@ export default function Room() {
     return moment(timeSource(message)).calendar();
   };
 
-  const getRooms = (isMounted) =>
-    db
-      .collection("rooms")
-      .doc(roomId)
-      .onSnapshot((snapshot) => {
-        if (isMounted) {
-          return snapshot.data() && setRoomName(snapshot.data().name);
-        }
-        return null;
-      });
+  const getRoomById = db.collection("rooms").doc(roomId);
 
-  const getMessages = (isMounted) =>
-    db
-      .collection("rooms")
-      .doc(roomId)
+  const getRooms = async (isMounted) =>
+    getRoomById.onSnapshot((snapshot) => {
+      if (isMounted) return setRoomName(snapshot.data().name);
+      return null;
+    });
+
+  const getMessages = async (isMounted) =>
+    getRoomById
       .collection("messages")
       .orderBy("timestamp", "asc")
       .onSnapshot((snapshot) => {
@@ -45,22 +40,17 @@ export default function Room() {
 
   useEffect(() => {
     let isMounted = true;
+
     if (user && roomId) {
-      getRooms(isMounted);
-      getMessages(isMounted);
+      getRooms(isMounted).then(() => {
+        setSeed(Math.floor(Math.random() * 5000));
+        getMessages(isMounted);
+      });
     }
     return () => {
       isMounted = false;
     };
   }, [roomId]);
-
-  useEffect(() => {
-    setSeed(Math.floor(Math.random() * 5000));
-
-    return function cleanup() {
-      setSeed(Math.floor(Math.random() * 5000));
-    };
-  }, []);
 
   return (
     <div className="room">

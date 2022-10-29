@@ -18,14 +18,16 @@ const SidebarRoom = ({ id, name }) => {
       );
 
   useEffect(() => {
-    if (id) {
-      getRoom();
-    }
+    let isMounted = true;
+
+    if (id) return isMounted && getRoom();
+
+    return () => {
+      isMounted = false;
+    };
   }, [id]);
 
-  useEffect(() => {
-    setSeed(Math.floor(Math.random() * 5000));
-  }, []);
+  useEffect(() => setSeed(Math.floor(Math.random() * 5000)), []);
 
   return (
     <div className="sidebar__Room">
@@ -37,7 +39,7 @@ const SidebarRoom = ({ id, name }) => {
           />
           <div className="sidebar__RoomInfo">
             <h2>{name}</h2>
-            <p>{messages[0]?.message}</p>
+            {messages[0] ? <p>{messages[0]?.message}</p> : <i>Empty room</i>}
           </div>
         </div>
       </Link>

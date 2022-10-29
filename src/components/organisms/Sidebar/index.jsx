@@ -9,20 +9,24 @@ export default function Sidebar() {
   const [rooms, setRooms] = useState([]);
 
   useEffect(() => {
-    const subscribe = () =>
-      db
-        .collection("rooms")
-        .orderBy("datecreated", "desc")
-        .onSnapshot((snapshot) => {
+    let isMounted = true;
+
+    db.collection("rooms")
+      .orderBy("datecreated", "desc")
+      .onSnapshot(
+        (snapshot) =>
+          isMounted &&
           setRooms(
             snapshot.docs.map((doc) => ({
               id: doc.id,
               data: doc.data(),
             }))
-          );
-        });
+          )
+      );
 
-    return subscribe();
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   return (

@@ -21,7 +21,6 @@
     "react-text-format": "^2.0.28"
   },
   "scripts": {
-    "preinstall": "npx only-allow pnpm",
     "start": "vite",
     "build": "vite build",
     "serve": "vite preview",
